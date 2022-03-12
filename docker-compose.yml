@@ -1,0 +1,50 @@
+version: "3"
+volumes:
+  data: # db用。dbのvolumes 先頭の名前と合わせる
+services:
+  nextjs:
+    container_name: fixedstyle.nextjs
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    volumes:
+      # {ホスト側の相対パス}:{コンテナ側の絶対パス}
+      - ./nextjs:/usr/src/app # ./nextjsが指定ディレクトリ。
+    ports:
+      - "3000:3000"
+    command: npm run dev
+  db:
+    container_name: fixedstyle.db
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - data:/var/lib/mysql
+      - ./docker/db:/etc/mysql/conf.d
+      # 本番からexportしたsqlファイルを初期データとしてつかう
+      - ./docker/db/fixedstyle_export_20220312.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp_user
+      MYSQL_ROOT_PASSWORD: wp_password
+      MYSQL_PASSWORD: wp_password
+    ports:
+      - "3306:3306"
+  wp:
+    container_name: fixedstyle.wp
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    depends_on:
+      - db
+    volumes:
+      # {ホスト側の相対パス}:{コンテナ側の絶対パス}
+      # - ./wordpress:/var/www/html # この指定だとwpファイルがまるまる連動してしまう。
+      - ./wordpress/wp-content/themes/fixedstyle:/var/www/html/wp-content/themes/fixedstyle
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_password
