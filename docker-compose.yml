@@ -21,7 +21,7 @@ services:
       - data:/var/lib/mysql
       - ./docker/db:/etc/mysql/conf.d
       # 本番からexportしたsqlファイルを初期データとしてつかう
-      - ./docker/db/fixedstyle_export_20220312.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
+      - ./docker/db/seeder/export_20220312.sql:/docker-entrypoint-initdb.d/install_wordpress.sql
     environment:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wp_user
@@ -40,6 +40,8 @@ services:
       # {ホスト側の相対パス}:{コンテナ側の絶対パス}
       # - ./wordpress:/var/www/html # この指定だとwpファイルがまるまる連動してしまう。
       - ./wordpress/wp-content/themes/fixedstyle:/var/www/html/wp-content/themes/fixedstyle
+      # UPロード画像はホスト側と連動
+      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads
     ports:
       - "8000:80"
     restart: always
