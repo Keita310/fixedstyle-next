@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+#wrapper {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.st-main {
+  padding: 20px 15px;
+  margin: 0 0 20px;
+  background: #fff;
+}
+
+.post {
+  padding-bottom: 10px;
+}
+
+section {
+  margin-bottom: 3em;
+}
+
+/*レスポンシブ用PC左右コンテンツ*/
+.responbox, .responbox30, .responbox40, .responbox50, .responbox60, .responbox70, .responbox .lbox {
+  margin-bottom: 10px;
+}
+
+/*50%*/
+.responbox50.smart50 {
+  .lbox {
+    float: left;
+    width: 49%;
+    box-sizing: border-box;
+    margin-bottom: -32768px;
+    padding-bottom: 32768px;
+  }
+  .rbox {
+    float: right;
+    box-sizing: border-box;
+    width: 49%;
+    margin-bottom: -32768px;
+    padding-bottom: 32768px;
+  }
+  overflow: hidden;
+}
+
+/*media Queries タブレット（600px）以上で適応したいCSS -タブレット・PC
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) {
+  .st-main {
+    background-color: #fff;
+    padding: 20px 30px;
+  }
+
+  /*レスポンシブ用PC左右コンテンツ*/
+  .responbox .lbox img {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /*30%*/
+  .responbox30 {
+    .lbox {
+      float: left;
+      padding-right: 15px;
+      width: 30%;
+      box-sizing: border-box;
+    }
+    .rbox {
+      float: left;
+      box-sizing: border-box;
+      width: 70%;
+    }
+  }
+  /*40%*/
+  .responbox, .responbox40 {
+    .lbox {
+      float: left;
+      padding-right: 15px;
+      width: 40%;
+      box-sizing: border-box;
+    }
+    .rbox {
+      float: left;
+      box-sizing: border-box;
+      width: 60%;
+    }
+  }
+  /*50%*/
+  .responbox50 {
+    .lbox {
+      float: left;
+      padding-right: 7px;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    .rbox {
+      float: left;
+      padding-left: 7px;
+      box-sizing: border-box;
+      width: 50%;
+    }
+  }
+  /*60%*/
+  .responbox60 {
+    .lbox {
+      float: left;
+      padding-right: 15px;
+      width: 60%;
+      box-sizing: border-box;
+    }
+    .rbox {
+      float: left;
+      box-sizing: border-box;
+      width: 40%;
+    }
+  }
+  /*70%*/
+  .responbox70 {
+    .lbox {
+      float: left;
+      padding-right: 15px;
+      width: 70%;
+      box-sizing: border-box;
+    }
+    .rbox {
+      float: right;
+      box-sizing: border-box;
+      width: 30%;
+    }
+  }
+
+}
+
+/*media Queries PCサイズ（960px）以上で適応したいCSS - PCのみ
+---------------------------------------------------------------------------------------------------*/
+@media print, screen and (min-width: 960px) {
+
+  #wrapper {
+    overflow: visible;
+    /*グローバルメニューの下層リンクを表示する為*/
+    padding: 0;
+    width: 100%;
+  }
+  #content {
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  #contentInner {
+    float: left;
+    width: 100%;
+    margin-right: -300px;
+  }
+  .st-main {
+    margin-right: 320px;
+    margin-left: 0px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding: 30px 50px 30px;
+  }
+
+}

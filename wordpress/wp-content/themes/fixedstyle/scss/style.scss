@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/*---------------------------------------------------------
+Theme Name: fixedstyle
+Theme URI: wp-fun.com
+Description:
+Author: ENJI
+Author URI: wp-fun.com/about
+Tags: custom-header, custom-menu
+Text Domain: stinger8
+Version: 20171207
+---------------------------------------------------------*/
+
+@import "mixin";
+@import "base";
+@import "layout";
+@import "original_sp_design"; //使われてないかも
+@import "material";
+@import "bootstrap";
+@import "header";
+@import "acordion_menu";
+@import "post";
+@import "footer";
+@import "post_list";
+@import "sidebar";
+@import "search";
+@import "pager";
+@import "sns";
+@import "pankuzu";
+@import "prev_next";
+@import "old_content";
+@import "detail_complete_bike";
+
+@media print, screen and (min-width: 960px) {
+
+  /*IEで要素がズレるのを対応*/
+  .ie7 .st-aside ul li, .ie8 .st-aside ul li, .ie9 .st-aside ul li {
+    display: list-item;
+    padding: 0;
+  }
+
+}

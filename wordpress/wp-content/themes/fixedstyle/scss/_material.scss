@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+
+///////////////////////////////////
+// RSS購読するボタン
+///////////////////////////////////
+.rssbox a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #1a1a1a;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+  &:hover {
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+  }
+}
+/*media Queries スマートフォンとタブレットサイズ（959px以下）で適応したいCSS - スマホ・タブレット
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+
+  /* RSS購読するボタン */
+  .rssbox a {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+}
+
+
+///////////////////////////////////
+// カレンダー
+///////////////////////////////////
+
+#wp-calendar {
+  border-collapse: collapse;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-top-color: #999;
+  border-right-color: #999;
+  width: 100%;
+  thead tr th {
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-color: #999;
+    border-left-color: #999;
+    font-size: 14px;
+    padding: 10px 3px;
+    text-align: center;
+    background-color: #f3f3f3;
+  }
+  td {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+  }
+  caption {
+    font-weight: bold;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 14px;
+  }
+  tbody tr #today {
+    background-color: #b0e0e6;
+  }
+}

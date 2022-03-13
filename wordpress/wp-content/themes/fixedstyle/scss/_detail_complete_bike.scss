@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+.detail-complete-bike {
+
+  // hタグデザインの変更
+  #{$headline2} {
+    background: initial;
+    color: initial;
+    font-size: initial;
+    line-height: initial;
+    margin: initial;
+    padding: initial;
+    border-radius: initial;
+    font-weight: initial;
+    @include headline3;
+  }
+  #{$headline3} {
+    font-size: initial;
+    line-height: initial;
+    margin: initial;
+    padding: initial;
+    color: initial;
+    background: initial;
+    border: initial;
+    @include headline4;
+  }
+
+  // レイアウト
+  .col-layout {
+    position: relative;
+  }
+
+  // 完成車名
+  .entry-title {
+    position: absolute;
+    top: 12px;
+    background: none;
+    font-size: 22px;
+    color: #666;
+    padding: 4px 0 8px 0;
+    margin: 0;
+    line-height: 1;
+    border-radius: 0;
+    span {
+      font-size: 14px;
+      color: #aaa;
+    }
+  }
+
+  // グラフと表のレイアウト
+  .detail {
+    display: block;
+  }
+
+  // グラフ
+  .graph {
+    margin: 0 auto;
+  }
+
+  // アイキャッチ
+  .eyecatch-wrap {
+    padding-top: 52px;
+    width: 100%;
+    .eyecatch {
+      border: 3px double #CCC;
+      img {
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+
+  .aff-link {
+    padding: 0 20px;
+    li {
+      border: none;
+      margin: 0 0 16px;
+    }
+    a {
+      padding: 0!important;
+      line-height: 1.8!important;
+    }
+    .img {
+      display: none!important;
+    }
+    .text {
+      width :100%!important;
+      .title {
+        font-size: 10px;
+        letter-spacing: -1px;
+        float: left!important;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .btn {
+        float: left!important;
+        margin: 0!important;
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+
+  // スペック表
+  .spec-area {
+    table {
+      border: none;
+      th {
+        border: none;
+        border-bottom: 4px solid #FFF;
+        background: #EEE;
+        padding: 8px 12px;
+        text-align: left;
+        font-weight: normal;
+      }
+      td {
+        border: none;
+        border-bottom: 4px solid #FFF;
+        background: #FFF;
+        padding: 8px 12px;
+
+      }
+    }
+  }
+
+  // 公式ページリンク
+  .official-link {
+    text-align: right;
+  }
+
+  // 関連完成車
+  .reco-bike-list {
+    display: flex;
+    dl {
+      width: (100% / 4);
+      padding: 12px;
+      box-sizing: border-box;
+      dt {
+        img {
+          display: block;
+          margin: 0 auto;
+          width:  90%;
+          padding: 6px;
+          border: 3px solid #EEE;
+        }
+      }
+      dd {
+        .title {
+          padding: 4px 0;
+        }
+      }
+    }
+  }
+
+
+  @media only screen and (max-width: 599px) {
+    // 関連完成車
+    .reco-bike-list {
+      dl {
+        width: (100% / 3);
+        &:nth-of-type(4) {
+          display: none;
+        }
+      }
+    }
+
+    .aff-link {
+      padding: 20px 20px 0;
+      .text .btn {
+        width: 100%!important;
+        padding: 6px 0 8px!important;
+      }
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    // タイトル
+    .entry-title {
+      font-size: 26px;
+      position: static;
+      margin: 0 0 16px 20px;
+      border-bottom: 1px dotted #CCC;
+    }
+
+    // アイキャッチ
+    .eyecatch-wrap {
+      width: 50%;
+      padding-top: 0;
+      margin: 0 auto;
+      .eyecatch {
+        border: 3px double #CCC;
+        position: relative;
+        &:before {
+          display: block;
+          content: '';
+          padding-top: 100%;
+        }
+        img {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin: auto;
+          max-width: calc(100% - 24px);
+          max-height: calc(100% - 24px);
+          display: block;
+        }
+      }
+    }
+
+
+    // コンテンツ
+    .content {
+      padding: 0 0 20px;
+    }
+    // 2カラムレイアウト
+    .col-layout {
+      display: flex;
+      margin: 12px 0 20px;
+      width: 100%;
+      &.v-align-center {
+        align-items: center;
+      }
+    }
+    // グラフと表のレイアウト
+    .detail {
+      display: flex;
+    }
+    .spec-area {
+      padding: 0 0 0 32px;
+      th, td {
+        font-size: 18px;
+      }
+    }
+  }
+  @media print, screen and (min-width: 960px) {
+    // タイトル
+    .entry-title {
+      font-size: 22px;
+    }
+
+    .spec-area {
+      th, td {
+        font-size: 14px;
+      }
+    }
+  }
+
+}
+
+
+
+
+

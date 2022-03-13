@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.swiper-container{
+    width: 100%;
+    padding: 0 0 20px;
+}
+.swiper-slide {
+    padding:0 10px;
+}
+
+.swiper-slide p.caption{
+    line-height: 1.5;
+    font-size:11px;
+    padding:3px 0 0;
+	text-align:center;
+}
+.swiper-slide p.caption a{
+	width:90%;
+	display:block;
+	margin:5px auto;
+}
+
+/*--- ページネーション---*/
+.swiper-container .pagination {
+    display: none;
+    text-align:center;
+    padding:15px 0 30px;
+}
+.swiper-container .pagination span.swiper-pagination-switch {
+    display: inline-block;
+    float: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    margin: 0 4px;
+    background-color:#ccc;
+    cursor: pointer;
+    transition: all .25s linear;
+    padding: 0;
+}
+ 
+.swiper-container .pagination span.swiper-active-switch {
+    background-color: #109954;
+}
+
+/* slick-dots */
+.swiper-container .slick-dots {
+    margin:0;
+    padding:0;
+}
+
+.swiper-container .slick-dots li{
+    width:5px;
+    height: 5px;
+    margin:0 10px;
+}
+.swiper-container .slick-dots button{
+    background: #ccc;
+    width:5px;
+    height: 5px;
+    border-radius: 100%;
+}
+.swiper-container .slick-dots button:before{
+    display: none;
+}
+.swiper-container .slick-dots .slick-active button{
+    background-color: #109954;
+}
+
+
+
+/*--------------------------------------------------------------------------------------------------
+	スマホデザイン
+--------------------------------------------------------------------------------------------------*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
+	
+
+ 
+}

@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+/*--------------------------------
+SNS
+---------------------------------*/
+
+.sns {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 20px;
+}
+
+.snstext {
+  font-size: 13px;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.snscount {
+  font-size: 13px;
+  vertical-align: middle;
+  padding: 0 10px;
+}
+
+.post .sns ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px 0px 20px;
+}
+
+.sns {
+  li {
+    float: left;
+    list-style: none;
+    width: 50%;
+    a {
+      font-size: 15px;
+      position: relative;
+      display: block;
+      padding: 5px 10px 5px 15px;
+      color: #fff;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      text-decoration: none;
+      height: 28px;
+      margin: 5px;
+      cursor: pointer;
+      line-height: 25px;
+      &:hover {}
+    }
+  }
+  .twitter a {
+    background: #55acee;
+    &:hover {
+      background: #4892cb;
+    }
+  }
+  .fa-twitter {
+    border-right: 1px solid #9ACFF4;
+    padding-right: 15px;
+  }
+  .facebook a {
+    background: #3b5998;
+    &:hover {
+      background: #324c81;
+    }
+  }
+  .fa-facebook {
+    border-right: 1px solid #607BB2;
+    padding-right: 15px;
+  }
+  .googleplus a {
+    background: #dc4e41;
+    &:hover {
+      background: #bb4237;
+    }
+  }
+  .fa-google-plus {
+    border-right: 1px solid #E0776D;
+    padding-right: 13px;
+  }
+  .hatebu a {
+    background: #00a5de;
+    &:hover {
+      background: #008cbd;
+    }
+  }
+  .fa-hatena {
+    border-right: 1px solid #48B6DB;
+    padding-right: 15px;
+  }
+  .line a {
+    background: #25af00;
+    &:hover {
+      background: #219900;
+    }
+  }
+  .fa-comment {
+    border-right: 1px solid #29c200;
+    padding-right: 15px;
+  }
+  .pocket a {
+    background: #f03e51;
+  }
+  .fa-get-pocket {
+    border-right: 1px solid #F27985;
+    padding-right: 15px;
+  }
+  .pocket a:hover {
+    background: #c0392b;
+  }
+}
+
+/*media Queries スマートフォンとタブレットサイズ（959px以下）で適応したいCSS - スマホ・タブレット
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+
+  .sns {
+    .fa {
+      font-size: 20px;
+    }
+    li a {
+      padding: 10px 15px;
+    }
+  }
+
+}
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+
+  .sns {
+    .fa {
+      font-size: 25px;
+    }
+    li a {
+      padding: 15px 20px;
+    }
+  }
+
+}
+
+/*media Queries PCサイズ（960px）以上で適応したいCSS - PCのみ
+---------------------------------------------------------------------------------------------------*/
+@media print, screen and (min-width: 960px) {
+
+  .sns {
+    li {
+      width: 33%;
+    }
+  }
+  .snstext {
+    display: inline;
+  }
+
+}
+

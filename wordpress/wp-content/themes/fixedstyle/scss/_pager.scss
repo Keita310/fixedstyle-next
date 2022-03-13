@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/*--------------------------------
+ページャー
+---------------------------------*/
+
+.st-pagelink {
+  padding: 20px 0px;
+  text-align: center;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .page-numbers {
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin: 2px;
+    font-size: 12px;
+    line-height: 39px;
+    min-width: 38px;
+    height: 38px;
+    display: inline-block;
+    text-align: center;
+    background: #EEE;
+    color: #555;
+    text-indent: -1px;
+    @include hover;
+    &.current {
+      background: $keyColor;
+      color: #FFF;
+      opacity: 1;
+    }
+    &.dots {
+      min-width: 20px;
+      padding: 0;
+      background: transparent;
+    }
+    &.prev, &.next {
+      display: none;
+    }
+  }
+}
+/*
+.pagination {
+  clear: both;
+  position: relative;
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 0;
+  padding-bottom: 20px;
+  padding-left: 0;
+  span {
+    display: block;
+    float: left;
+    margin: 2px 2px 2px 0;
+    padding: 6px 9px 5px 9px;
+    text-decoration: none;
+    width: auto;
+    color: #fff;
+    background-color: #999;
+  }
+  a {
+    display: block;
+    float: left;
+    margin: 2px 2px 2px 0;
+    padding: 6px 9px 5px 9px;
+    text-decoration: none;
+    width: auto;
+    color: #fff;
+    background-color: #999;
+    &:hover {
+      color: #fff;
+      background-color: #666666;
+    }
+  }
+  .current {
+    padding: 6px 9px 5px 9px;
+    color: #fff;
+    background-color: #CCCCCC;
+  }
+}
+*/
+
+@media only screen and (min-width: 600px) {
+  .st-pagelink {
+    .page-numbers {
+      &.prev, &.next {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+
+  .st-pagelink {
+    .page-numbers {
+      padding: 0 12px;
+      font-size: 18px;
+      line-height: 47px;
+      min-width: 46px;
+      height: 46px;
+      &.dots {
+        min-width: 28px;
+      }
+    }
+  }
+
+}
+
+
+

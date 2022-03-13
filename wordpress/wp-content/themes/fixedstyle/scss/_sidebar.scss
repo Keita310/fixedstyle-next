@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+#side {
+  ul li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  .children li {
+    padding-left: 10px;
+  }
+  ul li ul li {
+    list-style-type: none;
+    margin: 0px;
+  }
+  .sub-menu {
+    padding-left: 10px;
+  }
+  .st-aside {
+    padding: 0 15px 20px;
+  }
+  .side-t {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+  }
+  #mybox {
+    aside {
+      background: #FFF;
+      margin: 20px auto 0;
+      h2 {
+        background: #FFF;
+        border-bottom: 3px solid $keyColor;
+        border-radius: 0;
+        color: $mainColor;
+        padding: 16px 10px 12px;
+        margin: 0 0 0;
+        font-size: 16px;
+        line-height: 1;
+        font-weight: bold;
+        .fa {
+          position: relative;
+          top: -1px;
+          padding-right: 8px;
+        }
+      }
+      ul {
+        padding: 10px;
+        li {
+          a {
+            padding: 12px 3px;
+            border-bottom: 1px solid #CCC;
+            display: block;
+            font-size: 13px;
+            color: $mainColor;
+            @include linkArrow;
+          }
+          &:last-child a {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    #scrollad {
+      padding: 20px 0;
+      aside:first-child {
+        margin-top: 0;
+      }
+    }
+
+  }
+  h5 {
+    font-size: 15px;
+    line-height: 25px;
+    margin-bottom: 5px;
+  }
+
+}
+
+/*タグクラウド*/
+.tagcloud {
+  padding: 20px 10px;
+  a {
+    font-size: 13px !important;
+    line-height: 1em;
+    color: #1a1a1a;
+    display: inline-block;
+    border: 1px #1a1a1a solid;
+    white-space: nowrap;
+    padding: 8px 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    text-decoration: none;
+    opacity: 0.5;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+/*media Queries スマートフォンとタブレットサイズ（959px以下）で適応したいCSS - スマホ・タブレット
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+  #side .st-aside {
+    clear: both;
+    float: none;
+    width: auto;
+    position: static;
+  }
+
+}
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  #side {
+    #mybox {
+      aside {
+        ul {
+          li {
+            a {
+              padding: 8px 3px;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .tagcloud a {
+    font-size: 20px !important;
+    line-height: 1em;
+    padding: 15px;
+    margin-top: 10px;
+  }
+
+}
+
+/*media Queries PCサイズ（960px）以上で適応したいCSS - PCのみ
+---------------------------------------------------------------------------------------------------*/
+@media print, screen and (min-width: 960px) {
+
+  #side {
+    #mybox {
+      aside {
+        ul {
+          li {
+            a {
+              padding: 8px 3px;
+            }
+          }
+        }
+      }
+    }
+    h5 {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 5px;
+    }
+    .st-aside {
+      float: right;
+      width: 300px;
+      padding: 0px;
+    }
+  }
+}

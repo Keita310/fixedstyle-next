@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+/*--------------------------------
+検索フォーム
+---------------------------------*/
+
+#search {
+  padding-bottom: 0px;
+  position: relative;
+  width: 100%;
+  input {
+    border: none;
+  }
+}
+
+#searchform {
+  border: #ccc 1px solid;
+  border: none;
+}
+
+#s {
+  font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+  height: 50px;
+  color: #333;
+  font-size: 14px;
+  border-radius: 0;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  z-index: 10;
+  padding: 18px 65px 18px 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#searchsubmit {
+  cursor: pointer;
+  background: $keyColor;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 0;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 0 20px;
+  line-height: 48px;
+  height: 50px;
+  z-index: 20;
+}
+
+*:first-child + html #searchsubmit {
+  top: 1px;
+}
+
+/*アコーディオン内*/
+.acordion_tree .search-box {
+  padding: 10px;
+}

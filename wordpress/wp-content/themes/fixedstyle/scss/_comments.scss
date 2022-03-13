@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+#comments {
+  #respond, h4 {
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
+
+/*--------------------------------
+コメント
+---------------------------------*/
+
+#comments p a {
+  color: #333;
+}
+
+.post #comments h3 {
+  background-color: transparent;
+}
+
+#comments {
+  p {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 0px;
+    color: #333;
+    padding: 5px 0;
+  }
+  label {
+    display: block;
+  }
+}
+
+
+#comments {
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-body {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.fn {
+  font-style: normal;
+  font-size: 13px;
+}
+
+.says {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.commentmetadata {
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 24px;
+  height: 15px;
+  width: 100%;
+  clear: both;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+
+.reply {
+  padding: 5px;
+  font-size: 13px;
+}
+
+#comments {
+  #respond {
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    color: #666;
+  }
+  #commentform .tags {
+    padding: 10px;
+    background-color: #f3f3f3;
+    font-size: 13px;
+  }
+  #commentlist img {
+    padding: 10px;
+  }
+  .commets-list {
+    padding-left: 0px;
+    list-style-type: none;
+  }
+}
+
+.commets-list li {
+  list-style-type: none;
+}
+
+.comment-author.vcard .avatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.vcard .fn {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* コメント欄の下にある使用できるタグの表記を消す */
+
+.form-allowed-tags {
+  display: none;
+}
+
+#comments {
+  #st-reply-title {
+    background-image: none;
+    border: none;
+    margin-bottom: 0px;
+    padding: 0;
+    font-size: 110%;
+    font-weight: bold;
+  }
+  h4 {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    margin-bottom: 0px;
+  }
+  textarea {
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px #f2f2f2 solid;
+  }
+  input {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border: 1px #f2f2f2 solid;
+    &[type="submit"] {
+      background-color: #f3f3f3;
+      padding: 10px;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border: 1px #f2f2f2 solid;
+    }
+  }
+}
+
+

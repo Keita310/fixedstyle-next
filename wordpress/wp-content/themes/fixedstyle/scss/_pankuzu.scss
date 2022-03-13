@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*--------------------------------
+ぱんくず
+---------------------------------*/
+
+#breadcrumb {
+  margin: 0;
+  padding: 0 0 5px;
+  ol {
+    margin: 0;
+    padding: 0 0 5px;
+    li {
+      color: #ccc;
+      font-size: 13px;
+      list-style: none;
+      display: inline-block;
+      a {
+        text-decoration: none;
+        color: #ccc;
+      }
+    }
+  }
+}

@@ -1,2 +1,9 @@
+# docker配下
 docker/db/seeder/
+
+# wordpress配下
 wordpress/wp-content/uploads/
+wordpress/wp-content/static-img/
+
+# nextjs配下
+nextjs/**/*.snap

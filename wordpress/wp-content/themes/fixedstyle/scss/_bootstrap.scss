@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+
+////////////////////////////////////////////////////////////
+// ベンダーCSSの上書き
+////////////////////////////////////////////////////////////
+
+///////////////////////////////////
+// コンタクトフォーム7の送信ボタン
+///////////////////////////////////
+.wpcf7-submit {
+  width: 100%;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background: #f3f3f3;
+  color: #000;
+  border: none;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+  box-sizing: border-box;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+/*media Queries PCサイズ（960px）以上で適応したいCSS - PCのみ
+---------------------------------------------------------------------------------------------------*/
+@media print, screen and (min-width: 960px) {
+  .wpcf7-submit {
+    width: 50%;
+  }
+}
+
+
+//////////////////////////////////////////////////
+// 目次調整
+//////////////////////////////////////////////////
+#toc_container {
+  margin: 20px 0 0;
+  padding:16px;
+  box-sizing: border-box;
+}
+
+
+///////////////////////////////////
+// YES/NO診断
+///////////////////////////////////
+#yesno_wrap {
+
+  margin: 0 0 60px;
+
+  .yesno_q {
+    padding-top: 1.5rem;
+    dt {
+      margin-bottom: 0!important;
+      span {
+        background: $keyColor;
+      }
+    }
+    dd {
+      padding: 1rem 1.5rem 0 1.5rem!important;
+    }
+  }
+
+  ul#choices li button {
+    background: $mainColor;
+    border: none;
+    &:hover {
+      background: $keyColor;
+    }
+  }
+
+  // 戻るボタン
+  #return_first {
+    width: 100%;
+    padding: 0.7em;
+    margin-bottom: 3px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+    background: $mainColor;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    &:hover {
+      background: $keyColor;
+    }
+  }
+
+
+}
+
+/*media Queries タブレットサイズまで（～959px）まで適応したいCSS -タブレット
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 959px) {
+
+  #yesno_wrap {
+    ul#choices li button {
+      &:hover {
+        background: $mainColor;
+      }
+    }
+  
+    // 戻るボタン
+    #return_first {
+      &:hover {
+        background: $mainColor;
+      }
+    }
+  }
+
+}
+
+

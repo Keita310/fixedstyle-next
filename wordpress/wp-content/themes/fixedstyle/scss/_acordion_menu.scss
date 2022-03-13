@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/*--------------------------------
+アコーディオンメニュー
+---------------------------------*/
+
+.menu-navigation-container {
+  overflow: hidden;
+}
+
+nav li a:hover {
+  text-decoration: underline;
+}
+
+#s-navi {
+  margin: 0 -10px;
+  ul.sub-menu {
+    display: none;
+  }
+  .acordion {
+    p {
+      margin: 0;
+    }
+    margin: 0px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .trigger {
+    cursor: pointer;
+    overflow: hidden;
+  }
+}
+
+.trigger .fa:not(.fa-bars) {
+  font-size: 20px;
+}
+
+/*アコーディオンメニューボタン*/
+
+#s-navi {
+  .trigger .op {
+    font-family: "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+    color: #333;
+    font-size: 25px;
+    line-height: 1;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: auto;
+    padding: 22px;
+    max-width: 20%;
+    box-sizing: border-box;
+  }
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+    margin-bottom: 5px;
+  }
+  .acordion_tree {
+    padding: 10px 10px 20px;
+    display: none;
+    overflow: hidden;
+    top: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+  }
+}
+
+.acordion_tree ul.menu li {
+  float: none;
+  font-size: 15px;
+  padding: 10px 15px 10px 15px;
+  list-style: none;
+  border-bottom: dotted 1px #000;
+  .fa {
+    min-width: 1em;
+  }
+  &:last-child {
+    border: none;
+    padding-bottom: 0px;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.menu-close {
+  padding: 10px;
+}
+
+
+
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+
+  /*--------------------------------
+  アコーディオンメニュー
+  ---------------------------------*/
+  .trigger .fa {
+    &:not(.fa-bars) {
+      font-size: 25px;
+    }
+  }
+  .op-text, .op-text2 {
+    font-size: 20px;
+    line-height: 60px;
+    padding: 5px 0;
+    margin: 0 0 0 7px;
+    a {
+      font-size: 25px;
+      line-height: 60px;
+      padding: 5px 0;
+      margin: 0 0 0 7px;
+    }
+  }
+  /*アコーディオンメニューボタン*/
+  #s-navi .trigger {
+    .op, .op-st, .op-st2 {
+      font-size: 30px;
+      padding: 21px;
+    }
+  }
+  /*アコーディオンメニュー追加ボタン1*/
+  /*アコーディオンメニュー追加ボタン2*/
+  .acordion_tree ul.menu li {
+    font-size: 20px;
+    padding: 15px 20px;
+  }
+}
+

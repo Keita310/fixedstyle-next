@@ -1,0 +1,321 @@
+@charset "UTF-8";
+
+/*ブログタイトル*/
+
+header {
+  .sitename {
+    font-size: 22px;
+    color: #fff;
+    line-height: 30px;
+    font-family: 'Oswald', sans-serif;
+    padding: 10px 0 0;
+    margin-bottom: 10px;
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      &:hover {
+        -moz-opacity: 0.8;
+        opacity: 0.8;
+      }
+    }
+    img {
+      width:200px;
+      max-width: 200px;
+      margin: 0;
+    }
+  }
+  h1 {
+    font-size: 12px;
+    font-weight: normal;
+  }
+  .descr {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 0px;
+    line-height: 24px;
+    padding: 0;
+  }
+}
+#header-l {
+  padding-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #CCC;
+}
+
+#headbox-bg {
+  background: #FFF;
+}
+
+#headbox {
+  padding: 10px;
+  margin: 0;
+}
+
+#st-header {
+  display: none;
+}
+
+/*media Queries タブレット（600px）以上で適応したいCSS -タブレット・PC
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) {
+
+  #st-header {
+    display: block;
+  }
+
+}
+
+/*media Queries タブレットサイズ（600px～959px）のみで適応したいCSS -タブレットのみ
+---------------------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+
+
+
+}
+
+@media print, screen and (min-width: 960px) {
+
+  #st-header {
+    max-width: 1060px;
+    margin: 0 auto 20px;
+  }
+
+  /*--------------------------------
+  メニュー
+  ---------------------------------*/
+  #st-menubox {
+    background: $mainColor;
+    border-top: solid 1px #E0DEDE;
+    border-bottom: solid 5px #000;
+    margin-bottom: 20px;
+  }
+  #st-menuwide {
+    padding: 0px;
+    margin: 0 auto;
+    max-width: 1060px;
+  }
+  nav {
+    &.smanone, &.st5 {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+  }
+  header .smanone ul {
+    &.menu {
+      li {
+        box-sizing: border-box;
+        list-style-type: none;
+        float: left;
+        width: 160px;
+        height: 40px;
+        text-align: center;
+        border-right: solid 1px #000;
+        position: relative;
+        a {
+          @include transition;
+          display: block;
+          font-size: 13px;
+          overflow: hidden;
+          width: 100%;
+          height: 100%;
+          line-height: 40px;
+          color: $subColor;
+          text-decoration: none;
+          position: relative;
+          z-index: 1;
+        }
+        li {
+          a {
+            background: #f3f3f3;
+            /*ドロップダウンメニューの背景色*/
+            border-top: #E0DEDE solid 1px;
+            border-left: #E0DEDE solid 1px;
+            border-right: #E0DEDE solid 1px;
+            z-index: 2;
+          }
+          &:last-child a {
+            border-bottom: #E0DEDE solid 1px;
+          }
+        }
+        a:hover {
+          background: #000;
+        }
+      }
+      > li:last-child {
+        border: none;
+      }
+    }
+    &.sub-menu {
+      li ul.sub-menu {
+        position: absolute;
+        left: 160px;
+        top: 0;
+      }
+      display: none;
+    }
+    &.menu {
+      zoom: 1;
+    }
+  }
+  /* IE7 対策 */
+  * + html header .smanone ul {
+    &.menu li {
+      display: inline;
+      zoom: 1;
+    }
+    &.sub-menu {
+      zoom: 1;
+      position: relative;
+    }
+  }
+  .smanone {
+    display: block;
+  }
+  .pcnone {
+    display: none !important;
+  }
+  header {
+    padding: 0;
+  }
+  #header-l {
+    padding-top: 0;
+    padding-bottom: 0px;
+    border-bottom: none;
+  }
+  #headbox {
+    margin: 0 auto;
+    text-align: left;
+    max-width: 1040px;
+    img {
+      margin: 0;
+    }
+  }
+  #st-headwide #headbox img {
+    margin: 0 auto;
+  }
+  nav {
+    display: block;
+  }
+
+  /*--------------------------------
+  ヘッダーコンテンツ
+  ---------------------------------*/
+  #header-l {
+    float: left;
+  }
+  #header-r {
+    a {
+      text-decoration: none;
+    }
+    p {
+      margin: 0px;
+    }
+    .footermenust {
+      padding: 0 10px 0 0;
+      margin: 0px 0 5px;
+      text-align: right;
+      li {
+        border-right: 1px solid #000;
+        font-size: 12px;
+        line-height: 18px;
+        margin: 0;
+        &:last-child {
+          border-right: none;
+        }
+      }
+      a {
+        padding: 0px;
+        margin: 0px;
+        font-size: 12px;
+        color: #000;
+      }
+    }
+  }
+
+}
+
+
+/*--------------------------------
+メニューst5 未設定
+---------------------------------*/
+
+nav.st5 {
+  display: none;
+}
+
+#st-menuwide {
+  div.menu, nav.menu {
+    display: none;
+  }
+}
+@media print, screen and (min-width: 960px) {
+  nav {
+    &.st5 {
+      padding: 5px;
+      display: block;
+      li {
+        position: relative;
+        font-size: 14px;
+        padding-left: 15px;
+        display: inline;
+        padding-right: 15px;
+        border-right: 1px solid #ccc;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        &:last-child {
+          border: none;
+        }
+        .sub-menu {
+          display: none;
+        }
+      }
+    }
+    &.menu li .children {
+      display: none;
+    }
+    &.st5 li a {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+  .menu-nav.st5igation-container {
+    overflow: hidden;
+  }
+  nav.st5 li a:hover {
+    text-decoration: underline;
+  }
+  #st-menuwide {
+    div.menu, nav.menu {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 5px;
+      display: block;
+    }
+    div.menu:after, nav.menu:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    div.menu li, nav.menu li {
+      position: relative;
+      font-size: 14px;
+      padding-left: 15px;
+      display: inline;
+      padding-right: 15px;
+      border-right: 1px solid #ccc;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    div.menu li:last-child, nav.menu li:last-child {
+      border: none;
+    }
+    div.menu li .sub-menu, nav.menu li .sub-menu {
+      display: none;
+    }
+    div.menu li a, nav.menu li a {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}
