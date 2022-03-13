@@ -1,5 +1,6 @@
-import { useCounter } from "../components/useCounter";
-import Header from "../components/organisms/header";
+import { useCounter } from "components/useCounter";
+import Header from "components/organisms/header";
+import PostList from "components/organisms/postList";
 
 export default function App() {
   const { count, increment, decrement } = useCounter(10);
@@ -22,6 +23,8 @@ export default function App() {
       <h1>Count: {count}</h1>
       <button onClick={incrementDouble}>2 増やす</button>
       <button onClick={decrementDouble}>2 減らす</button>
+
+      <PostList />
     </div>
   );
 }
