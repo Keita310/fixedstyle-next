@@ -33,7 +33,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 ```
 ssg ssrで頑張る？light sail
 litesail
@@ -65,6 +64,10 @@ https://qiita.com/zaburo/items/ad931e266fff35e1d756
 getStaticProps と getStaticPaths と getServerSideProp
 https://qiita.com/matamatanot/items/1735984f40540b8bdf91
 https://y-hiroyuki.xyz/next-js/getstaticpaths
+
+
+testの書き方わかりやすい
+https://qiita.com/suzu1997/items/e4ee2fc1f52fbf505481
 
 
 ディレクトリ構成の決め方
@@ -144,6 +147,8 @@ npm install --save-dev @wojtekmaj/enzyme-adapter-react-17
 npm install --save-dev react-test-renderer @types/react-test-renderer
 npm install --save-dev @testing-library/react
 
+// fontawesome
+npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons
 
 
 dockerからコマンド実行
