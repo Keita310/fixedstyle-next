@@ -1,8 +1,10 @@
 import { useCounter } from 'components/useCounter'
 import Header from 'components/organisms/header'
-import PostList from 'components/organisms/postList'
+import PostList from 'components/molecules/postList'
+import { getPosts } from 'utils/wpApi'
+import { PropsTypes } from 'types/pages/index'
 
-export default function App() {
+export default function App({ posts }: PropsTypes) {
   const { count, increment, decrement } = useCounter(10)
 
   const incrementDouble = () => {
@@ -22,7 +24,14 @@ export default function App() {
       <button onClick={incrementDouble}>2 増やす</button>
       <button onClick={decrementDouble}>2 減らす</button>
 
-      <PostList />
+      <PostList posts={posts} />
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await getPosts()
+  return {
+    props: posts,
+  }
 }
