@@ -17,6 +17,32 @@ if ( !function_exists( 'st_after_setup_theme' ) ) {
 add_action( 'after_setup_theme', 'st_after_setup_theme' );
 
 
+/* WP REST APIに独自エンドポイントを追加
+****************************************/
+function rest_api_wp_query() {
+	$thumbnail = isset($_GET['thumbnail']) ? $_GET['thumbnail'] : 'full';
+	$data = new WP_Query($_GET);
+	print_r($data);exit;
+	foreach ($data->posts as &$p) {
+		// 画像パスを追加
+		$image = wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), $thumbnail);
+		$p->post_eyecatch = $image[0];
+		// カスタムフィールドを追加
+		$p->custom_field = get_post_custom($p->ID);
+	}
+	return $data->posts;
+}
+function add_rest_original_endpoint(){
+	//エンドポイントを登録(～wp/custom/query?)
+	register_rest_route( 'wp/v2', '/query', array(
+		'methods' => 'GET',
+		//エンドポイントにアクセスした際に実行される関数
+		'callback' => 'rest_api_wp_query',
+	));
+}
+add_action('rest_api_init', 'add_rest_original_endpoint');
+
+
 /* セッション開始
 ****************************************/
 function init_session_start() {
