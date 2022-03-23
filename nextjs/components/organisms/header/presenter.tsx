@@ -5,17 +5,16 @@ type Props = {
   description: string
 }
 
-const Presenter = ({description}: Props) => {
-
+const Presenter = ({ description }: Props) => {
   return (
     <header>
-      <div id="headbox-bg">
-        <div className="clearfix" id="headbox">
-          <div id="header-l">
+      <div id='headbox-bg'>
+        <div className='clearfix' id='headbox'>
+          <div id='header-l'>
             <SiteName>
-              <Link href="/">
+              <Link href='/'>
                 <a>
-                  <img src="/images/logo_dark.png" alt="fixedstyleロゴ" title="fixedstyleロゴ" />
+                  <img src='/images/logo_dark.png' alt='fixedstyleロゴ' title='fixedstyleロゴ' />
                 </a>
               </Link>
             </SiteName>
@@ -25,18 +24,16 @@ const Presenter = ({description}: Props) => {
         </div>
       </div>
 
-      <div id="gazou-wide">
-        カスタムヘッダーメニュー
-  
-        カスタムヘッダー
-        <div id="st-headerbox">
-          <div id="st-header">
-            <img src="" height="" width="" alt="" />
+      <div id='gazou-wide'>
+        カスタムヘッダーメニュー カスタムヘッダー
+        <div id='st-headerbox'>
+          <div id='st-header'>
+            <img src='' height='' width='' alt='' />
           </div>
-        </div>                
+        </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
 export default Presenter

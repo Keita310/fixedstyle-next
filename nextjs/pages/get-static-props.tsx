@@ -2,19 +2,19 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
 type Props = {
-  stars: number,
+  stars: number
   time: number
 }
 
 function Index({ stars, time }: Props) {
-  const aaa = Date.now();
+  const aaa = Date.now()
   return (
     <div>
       {aaa}
       {time}
       <p>Next.js has {stars} ⭐️</p>
-      <Link href="/get-server-side-props">
-      <a>Go to getServerSideProps</a>
+      <Link href='/get-server-side-props'>
+        <a>Go to getServerSideProps</a>
       </Link>
     </div>
   )
@@ -26,7 +26,7 @@ export async function getStaticProps() {
   return {
     props: {
       stars: json.stargazers_count,
-      time: Date.now()
+      time: Date.now(),
     },
   }
 }

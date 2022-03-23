@@ -1,30 +1,28 @@
-import { useCounter } from "components/useCounter";
-import Header from "components/organisms/header";
-import PostList from "components/organisms/postList";
+import { useCounter } from 'components/useCounter'
+import Header from 'components/organisms/header'
+import PostList from 'components/organisms/postList'
 
 export default function App() {
-  const { count, increment, decrement } = useCounter(10);
+  const { count, increment, decrement } = useCounter(10)
 
   const incrementDouble = () => {
-    increment();
-    increment();
-  };
+    increment()
+    increment()
+  }
 
   const decrementDouble = () => {
-    decrement();
-    decrement();
-  };
+    decrement()
+    decrement()
+  }
 
   return (
-    <div className="App">
-      <Header
-        description="ピストバイク初心者 パーツやトリック、カスタムのことなら【Fixed Style】"
-      />
+    <div className='App'>
+      <Header description='ピストバイク初心者 パーツやトリック、カスタムのことなら【Fixed Style】' />
       <h1>Count: {count}</h1>
       <button onClick={incrementDouble}>2 増やす</button>
       <button onClick={decrementDouble}>2 減らす</button>
 
       <PostList />
     </div>
-  );
+  )
 }

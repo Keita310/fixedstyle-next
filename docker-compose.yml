@@ -8,8 +8,8 @@ services:
       context: .
       dockerfile: ./docker/node/Dockerfile
     volumes:
-      # {ホスト側の相対パス}:{コンテナ側の絶対パス}
-      - ./nextjs:/usr/src/app # ./nextjsが指定ディレクトリ。
+      # {ホスト側の相対パス}:{コンテナ側の絶対パス}:{delegatedパフォーマンスを上げるオプション}
+      - ./nextjs:/usr/src/app:delegated # ./nextjsが指定ディレクトリ。
     ports:
       - "3000:3000"
     command: npm run dev
@@ -37,11 +37,11 @@ services:
     depends_on:
       - db
     volumes:
-      # {ホスト側の相対パス}:{コンテナ側の絶対パス}
+      # {ホスト側の相対パス}:{コンテナ側の絶対パス}:{delegatedパフォーマンスを上げるオプション}
       # - ./wordpress:/var/www/html # この指定だとwpファイルがまるまる連動してしまう。
-      - ./wordpress/wp-content/themes/fixedstyle:/var/www/html/wp-content/themes/fixedstyle
+      - ./wordpress/wp-content/themes/fixedstyle:/var/www/html/wp-content/themes/fixedstyle:delegated
       # UPロード画像はホスト側と連動
-      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
     ports:
       - "8000:80"
     restart: always

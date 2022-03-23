@@ -35,17 +35,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 ```
-fixedstyle
-
-
-wordpress
-next.js
-type script
 ssg ssrで頑張る？light sail
 litesail
-
-dockerに開発環境整える。
-
 
 
 next.jsの構成サンプル
@@ -65,7 +56,7 @@ https://penpen-dev.com/blog/wordpress-docker-headless/
 
 wordpressをAPI化
 https://fixedstyle.net/wp-json/wp/v2/posts/
-
+http://localhost:8000/wp-json/wp/v2/posts/
 
 
 SSG
@@ -84,6 +75,10 @@ TSの設定
 https://qiita.com/dtakkiy/items/a19d81604d534ec605a2
 
 
+
+eslint prettierの設定
+https://fwywd.com/tech/next-eslint-prettier
+https://chaika.hatenablog.com/entry/2021/07/21/083000
 
 ローカルアクセス先
 http://localhost:3000/
@@ -120,6 +115,11 @@ npm uninstall パッケージ --save-dev
 追加ライブラリ
 npm install isomorphic-unfetch
 
+
+// prettier
+npm install --save-dev prettier eslint-config-prettier
+
+
 // styled-components
 // 本体
 npm install --save styled-components
@@ -134,17 +134,24 @@ npm install --save-dev babel-plugin-root-import
 
 // test周り
 npm install --save-dev jest
-npm install --save-dev @testing-library/react
+npm install --save-dev ts-jest
+npm install --save-dev @types/jest
 npm install --save-dev enzyme
+npm install --save-dev @types/enzyme
 // 非公式ライブラリ
 npm install --save-dev @wojtekmaj/enzyme-adapter-react-17
 
 npm install --save-dev react-test-renderer @types/react-test-renderer
-npm install --save-dev ts-jest
+npm install --save-dev @testing-library/react
 
 
 
+dockerからコマンド実行
+docker-compose exec nextjs コマンド
+docker-compose exec wp コマンド
 
+ログ表示
+docker-compose logs -f
 
 
 
@@ -154,7 +161,9 @@ npm run dev
 npm run build
 本番サーバー立ち上げ
 npm run start
-
+テスト実行
+npm run test
+docker-compose exec nextjs npm run test
 
 lintチェック
 npm run lint

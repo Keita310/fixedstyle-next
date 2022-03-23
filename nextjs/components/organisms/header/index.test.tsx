@@ -1,6 +1,4 @@
-import {shallow} from 'enzyme'
+import { shallow } from 'enzyme'
 import Index from './index'
 
-describe('propTypesのテスト', () => {
-
-});
+describe('propTypesのテスト', () => {})
