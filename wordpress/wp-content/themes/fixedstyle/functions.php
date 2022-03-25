@@ -17,17 +17,32 @@ if ( !function_exists( 'st_after_setup_theme' ) ) {
 add_action( 'after_setup_theme', 'st_after_setup_theme' );
 
 
+function dd($content) {
+	var_dump($content);exit;
+}
+
 /* WP REST APIに独自エンドポイントを追加
 ****************************************/
 function rest_api_wp_query() {
 	$thumbnail = isset($_GET['thumbnail']) ? $_GET['thumbnail'] : 'full';
 	$data = new WP_Query($_GET);
-	print_r($data);exit;
 	foreach ($data->posts as &$p) {
-		// 画像パスを追加
+		$data->the_post();
+		// カテゴリ
+		$p->post_category = get_the_category();
+		// タグ
+		$p->post_tags = get_the_tags();
+		// パーマリンク
+		$p->post_permalink = get_the_permalink();
+		// 更新日
+		$p->post_created_at = get_the_time('Y/m/d');
+		$p->post_updated_at = get_the_modified_time('Y/m/d');
+		// 抜粋文
+		$p->post_excerpt = get_the_excerpt();
+		// 画像パス
 		$image = wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), $thumbnail);
 		$p->post_eyecatch = $image[0];
-		// カスタムフィールドを追加
+		// カスタムフィールド
 		$p->custom_field = get_post_custom($p->ID);
 	}
 	return $data->posts;
