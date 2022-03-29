@@ -40,8 +40,12 @@ function rest_api_wp_query() {
 		// 抜粋文
 		$p->post_excerpt = get_the_excerpt();
 		// 画像パス
-		$image = wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), $thumbnail);
-		$p->post_eyecatch = $image[0];
+		$p->post_eyecatch = array(
+			'full' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'full'),
+			'st_thumb100' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb100'),
+			'st_thumb150' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb150'),
+			'st_thumb500' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb500')
+		);
 		// カスタムフィールド
 		$p->custom_field = get_post_custom($p->ID);
 	}

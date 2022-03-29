@@ -2,55 +2,77 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
 import { faClock, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
-import { dateChangeFormat } from 'utils/dateUtil'
 import { ListsTypes, ListTypes } from 'types/components/molecules/postList'
 
 const list = (post: ListTypes, key: number) => {
   return (
     <dl className='clearfix' key={key}>
       <dt>
-        <Link href={post.link}>
+        <Link href={post.post_permalink}>
           <a>
             <img
-              src='https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg'
+              src={post.post_eyecatch.st_thumb150[0]}
               className='attachment-thumbnail size-thumbnail wp-post-image'
-              alt='チェーン交換'
-              srcSet='https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-100x100.jpg 100w'
-              sizes='(max-width: 150px) 100vw, 150px'
-              width='150'
-              height='150'
+              alt={post.post_title}
+              srcSet={
+                post.post_eyecatch.st_thumb150[0] +
+                ' ' +
+                post.post_eyecatch.st_thumb150[1] +
+                'w, ' +
+                post.post_eyecatch.st_thumb100[0] +
+                ' ' +
+                post.post_eyecatch.st_thumb100[1] +
+                'w'
+              }
+              sizes={
+                '(max-width: ' +
+                post.post_eyecatch.st_thumb150[1] +
+                'px) 100vw, ' +
+                post.post_eyecatch.st_thumb150[1] +
+                'px'
+              }
+              width={post.post_eyecatch.st_thumb150[1]}
+              height={post.post_eyecatch.st_thumb150[1]}
             />
           </a>
         </Link>
       </dt>
       <dd>
         <p className='kanren-t'>
-          <Link href={post.link}>
-            <a>{post.title.rendered}</a>
+          <Link href={post.post_permalink}>
+            <a>{post.post_title}</a>
           </Link>
         </p>
         <div className='blog_info'>
           <p>
             <FontAwesomeIcon icon={faClock} />
-            {dateChangeFormat(post.modified)}&nbsp;
+            {post.post_created_at}&nbsp;
             <span className='pcone'>
               <FontAwesomeIcon icon={faFolderOpen} />
-              <a href='https://fixedstyle.net/customize/' rel='category tag'>
-                カスタマイズ
-              </a>
+              <Link href={post.post_category[0].slug}>
+                <a rel='category tag'>{post.post_category[0].name}</a>
+              </Link>
               <br />
-              <FontAwesomeIcon icon={faTags} />
-              &nbsp;
-              <a href='https://fixedstyle.net/tag/%e3%83%81%e3%82%a7%e3%83%bc%e3%83%b3/' rel='tag'>
-                チェーン
-              </a>
+              {(() => {
+                if (post.post_tags) {
+                  return (
+                    <>
+                      <FontAwesomeIcon icon={faTags} />
+                      &nbsp; リンクをwpのドメインへ向ける
+                      <Link href={'tag/' + post.post_tags[0].slug}>
+                        <a rel='tag'>{post.post_tags[0].name}</a>
+                      </Link>
+                    </>
+                  )
+                }
+              })()}
             </span>
           </p>
         </div>
         <div className='smanone2'>
           <p
             dangerouslySetInnerHTML={{
-              __html: post.excerpt.rendered,
+              __html: post.post_excerpt,
             }}
           ></p>
         </div>
@@ -61,7 +83,10 @@ const list = (post: ListTypes, key: number) => {
 
 const Presenter = ({ posts }: ListsTypes) => {
   console.log(posts)
-  const lists = posts.map((post: ListTypes, index: number) => list(post, index))
+  let lists = ''
+  if (posts.length) {
+    lists = posts.map((post: ListTypes, index: number) => list(post, index))
+  }
   return <div className='kanren'>{lists}</div>
 }
 export default Presenter
