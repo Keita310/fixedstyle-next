@@ -1,7 +1,9 @@
+// 記事リストの配列
 export type ListsTypes = {
   posts: array
 }
 
+// 配列の各項目
 export type ListTypes = {
   post_title: string
   post_excerpt: string

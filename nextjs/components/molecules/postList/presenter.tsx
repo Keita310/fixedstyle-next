@@ -1,12 +1,13 @@
 import Link from 'next/link'
+import Tags from 'components/atoms/tags'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTags } from '@fortawesome/free-solid-svg-icons'
 import { faClock, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
 import { ListsTypes, ListTypes } from 'types/components/molecules/postList'
+import { PostList } from './style'
 
 const list = (post: ListTypes, key: number) => {
   return (
-    <dl className='clearfix' key={key}>
+    <dl key={key}>
       <dt>
         <Link href={post.post_permalink}>
           <a>
@@ -43,27 +44,19 @@ const list = (post: ListTypes, key: number) => {
             <a>{post.post_title}</a>
           </Link>
         </p>
-        <div className='blog_info'>
+        <div className='blog-info'>
           <p>
             <FontAwesomeIcon icon={faClock} />
             {post.post_created_at}&nbsp;
             <span className='pcone'>
               <FontAwesomeIcon icon={faFolderOpen} />
-              <Link href={post.post_category[0].slug}>
+              <Link href={process.env.SITE_URL + '/' + post.post_category[0].slug}>
                 <a rel='category tag'>{post.post_category[0].name}</a>
               </Link>
               <br />
               {(() => {
                 if (post.post_tags) {
-                  return (
-                    <>
-                      <FontAwesomeIcon icon={faTags} />
-                      &nbsp; リンクをwpのドメインへ向ける
-                      <Link href={'tag/' + post.post_tags[0].slug}>
-                        <a rel='tag'>{post.post_tags[0].name}</a>
-                      </Link>
-                    </>
-                  )
+                  return <Tags tags={post.post_tags} />
                 }
               })()}
             </span>
@@ -82,11 +75,10 @@ const list = (post: ListTypes, key: number) => {
 }
 
 const Presenter = ({ posts }: ListsTypes) => {
-  console.log(posts)
   let lists = ''
   if (posts.length) {
     lists = posts.map((post: ListTypes, index: number) => list(post, index))
   }
-  return <div className='kanren'>{lists}</div>
+  return <PostList>{lists}</PostList>
 }
 export default Presenter

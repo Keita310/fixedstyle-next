@@ -24,7 +24,9 @@ export default function App({ posts }: PropsTypes) {
       <button onClick={incrementDouble}>2 増やす</button>
       <button onClick={decrementDouble}>2 減らす</button>
 
-      <PostList posts={posts} />
+      <article>
+        <PostList posts={posts} />
+      </article>
     </div>
   )
 }
