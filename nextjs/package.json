@@ -9,7 +9,8 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
-    "test": "jest --maxWorkers=74%"
+    "test": "jest --maxWorkers=74%",
+    "test:updateSnapshot": "jest --updateSnapshot"
   },
   "dependencies": {
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
@@ -37,9 +38,13 @@
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^27.5.1",
+    "msw": "^0.39.2",
     "prettier": "^2.6.0",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.3",
     "typescript": "4.5.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
