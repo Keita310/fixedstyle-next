@@ -1,30 +1,64 @@
-import { useCounter } from "components/useCounter";
-import Header from "components/organisms/header";
-import PostList from "components/organisms/postList";
+import Link from 'next/link'
+import {getAllPosts} from 'utils/wpApi'
 
-export default function App() {
-  const { count, increment, decrement } = useCounter(10);
+import Layout from 'components/layout'
+import Sns from 'components/sns'
+import PostList from 'components/postList'
+import Pager from 'components/pager'
 
-  const incrementDouble = () => {
-    increment();
-    increment();
-  };
 
-  const decrementDouble = () => {
-    decrement();
-    decrement();
-  };
-
+function Index({posts}: {posts: any}) {
   return (
-    <div className="App">
-      <Header
-        description="ピストバイク初心者 パーツやトリック、カスタムのことなら【Fixed Style】"
-      />
-      <h1>Count: {count}</h1>
-      <button onClick={incrementDouble}>2 増やす</button>
-      <button onClick={decrementDouble}>2 減らす</button>
-
-      <PostList />
-    </div>
-  );
+    <Layout>
+      <div className="banner-recomends">
+        <ul>
+          <li>
+            <Link href="https://fixedstyle.net/complete_bike/">
+              <a>
+                <img src="https://fixedstyle.net/wp-content/uploads/2018/03/complete_bike-500x250.jpg" />
+                <span>ピストバイク完成車の選び方</span>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <a href="https://fixedstyle.net/other/gear/">
+              <img src="https://fixedstyle.net/wp-content/uploads/2012/02/gear-500x250.jpg" />
+              <span>ピストバイクギヤ比</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://fixedstyle.net/beginner/about_pist/">
+              <img src="https://fixedstyle.net/wp-content/uploads/2010/04/about_pist-500x250.jpg" />
+              <span>ピストについて</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://fixedstyle.net/customize/custom_brake/">
+              <img src="https://fixedstyle.net/wp-content/uploads/2016/01/brake-500x250.jpg" />
+              <span>ブレーキのカスタマイズ</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <article>
+        <div className="st-aside">
+          <PostList posts={posts} />
+          <Pager />
+        </div>
+        <Sns />
+      </article>
+    </Layout>
+  )
 }
+
+export async function getStaticProps() {
+  const posts = await getAllPosts()
+  return {
+    props: {
+      posts: posts
+    },
+  }
+}
+
+export default Index
