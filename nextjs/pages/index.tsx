@@ -6,7 +6,6 @@ import Sns from 'components/sns'
 import PostList from 'components/postList'
 import Pager from 'components/pager'
 
-
 function Index({posts}: {posts: any}) {
   return (
     <Layout>

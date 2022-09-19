@@ -17,6 +17,51 @@ if ( !function_exists( 'st_after_setup_theme' ) ) {
 add_action( 'after_setup_theme', 'st_after_setup_theme' );
 
 
+function dd($content) {
+	var_dump($content);exit;
+}
+
+/* WP REST APIに独自エンドポイントを追加
+****************************************/
+function rest_api_wp_query() {
+	$thumbnail = isset($_GET['thumbnail']) ? $_GET['thumbnail'] : 'full';
+	$data = new WP_Query($_GET);
+	foreach ($data->posts as &$p) {
+		$data->the_post();
+		// カテゴリ
+		$p->post_category = get_the_category();
+		// タグ
+		$p->post_tags = get_the_tags();
+		// パーマリンク
+		$p->post_permalink = get_the_permalink();
+		// 更新日
+		$p->post_created_at = get_the_time('Y/m/d');
+		$p->post_updated_at = get_the_modified_time('Y/m/d');
+		// 抜粋文
+		$p->post_excerpt = get_the_excerpt();
+		// 画像パス
+		$p->post_eyecatch = array(
+			'full' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'full'),
+			'st_thumb100' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb100'),
+			'st_thumb150' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb150'),
+			'st_thumb500' => wp_get_attachment_image_src(get_post_thumbnail_id($p->ID), 'st_thumb500')
+		);
+		// カスタムフィールド
+		$p->custom_field = get_post_custom($p->ID);
+	}
+	return $data->posts;
+}
+function add_rest_original_endpoint(){
+	//エンドポイントを登録(～wp/custom/query?)
+	register_rest_route( 'wp/v2', '/query', array(
+		'methods' => 'GET',
+		//エンドポイントにアクセスした際に実行される関数
+		'callback' => 'rest_api_wp_query',
+	));
+}
+add_action('rest_api_init', 'add_rest_original_endpoint');
+
+
 /* セッション開始
 ****************************************/
 function init_session_start() {
