@@ -22,10 +22,7 @@ export async function getPosts() {
 */
 
   const res = await fetch(`${process.env.WP_REST_API}/wp-json/wp/v2/query?${params}`)
-  const json = await res.json()
-  return {
-    posts: json,
-  }
+  return await res.json()
 }
 
 /**

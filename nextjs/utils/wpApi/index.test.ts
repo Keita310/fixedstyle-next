@@ -12,7 +12,7 @@ describe('グループ化１', () => {
 
   it('最新記事正常取得', async () => {
     const res = await getPosts()
-    const post = res.posts[0]
+    const post = res[0]
     expect(post.post_permalink).toBe('https://fixedstyle.net/customize/change_seat/')
     expect(post.post_title).toBe('サドル(シート)の交換')
     expect(post.post_eyecatch.st_thumb150[0]).toBe(

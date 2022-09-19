@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import {getAllPosts} from 'utils/wpApi'
+import {getPosts} from 'utils/wpApi'
 
 import Layout from 'components/layout'
 import Sns from 'components/sns'
-import PostList from 'components/postList'
+import PostList from 'components/molecules/postList'
 import Pager from 'components/pager'
 
 function Index({posts}: {posts: any}) {
@@ -52,7 +52,7 @@ function Index({posts}: {posts: any}) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts()
+  const posts = await getPosts()
   return {
     props: {
       posts: posts
