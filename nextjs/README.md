@@ -150,6 +150,8 @@ npm install --save-dev @testing-library/react
 // fontawesome
 npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons
 
+// jquery-param
+npm install --save jquery-param
 
 dockerからコマンド実行
 docker-compose exec nextjs コマンド

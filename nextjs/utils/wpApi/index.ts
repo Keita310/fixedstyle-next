@@ -1,25 +1,19 @@
 import fetch from 'isomorphic-unfetch'
-import jQuery from 'jquery'
+import param from 'jquery-param';
 
 /**
  * 記事一覧リストを取得
  */
 export async function getPosts() {
-  /*
-  const params = jQuery.param({
-    posts_per_page: 10,
+  const params = param({
+    'posts_per_page': 10,
+    'has_password': 0, // false
+    'thumbnail': 'news_list',
+    'orderby': 'date',
+    'order': 'DESC',
+    'category__not_in': 36, // 完成車は除く
+    'post_status': ['publish']
   })
-*/
-  const params = 'posts_per_page=10'
-  /*
-    'has_password' => false,
-    'thumbnail' => 'news_list',
-    'posts_per_page' => 10,
-    'orderby' => 'date',
-    'order' => 'DESC',
-    'category__in' => $categoryId,
-    post_status' => array('publish', 'private')
-*/
 
   const res = await fetch(`${process.env.WP_REST_API}/wp-json/wp/v2/query?${params}`)
   return await res.json()
