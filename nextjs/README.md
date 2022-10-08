@@ -68,6 +68,8 @@ https://y-hiroyuki.xyz/next-js/getstaticpaths
 
 testの書き方わかりやすい
 https://qiita.com/suzu1997/items/e4ee2fc1f52fbf505481
+https://zenn.dev/iamtillmans/articles/171f41fbd03c89
+
 
 
 ディレクトリ構成の決め方
@@ -76,6 +78,10 @@ https://maku.blog/p/4is2ahp/
 
 TSの設定
 https://qiita.com/dtakkiy/items/a19d81604d534ec605a2
+
+
+Styled-componentわかりやすい
+https://qiita.com/taneba/items/4547830b461d11a69a20
 
 
 
@@ -141,6 +147,7 @@ npm install --save-dev ts-jest
 npm install --save-dev @types/jest
 npm install --save-dev enzyme
 npm install --save-dev @types/enzyme
+npm install --save-dev msw
 // 非公式ライブラリ
 npm install --save-dev @wojtekmaj/enzyme-adapter-react-17
 
@@ -171,6 +178,9 @@ npm run start
 テスト実行
 npm run test
 docker-compose exec nextjs npm run test
+スナップショット更新
+docker-compose exec nextjs npm run test:updateSnapshot
+
 
 lintチェック
 npm run lint
