@@ -50,10 +50,11 @@ const Header = () => {
               </ul>
             </nav>
           </div>
-		</div>
+		    </div>
         <div id="st-headerbox">
           <div id="st-header">
             <img src="https://fixedstyle.net/wp-content/uploads/2018/03/top.jpg" height="350" width="1060" alt="" />
+            {/*<img src="https://fixedstyle.net/wp-content/uploads/2018/03/top-1.jpg" height="350" width="1060" alt="" />*/}
           </div>
         </div>
       </div>

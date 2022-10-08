@@ -50,7 +50,7 @@ const list = (post: ListTypes, key: number) => {
             {post.post_created_at}&nbsp;
             <span className='pcone'>
               <FontAwesomeIcon icon={faFolderOpen} />
-              <Link href={process.env.SITE_URL + '/' + post.post_category[0].slug}>
+              <Link href={'/' + post.post_category[0].slug}>
                 <a rel='category tag'>{post.post_category[0].name}</a>
               </Link>
               <br />

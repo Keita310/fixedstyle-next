@@ -886,6 +886,7 @@ section {
   margin: 20px 0 0;
   padding: 16px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 #yesno_wrap {

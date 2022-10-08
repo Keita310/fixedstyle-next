@@ -14,20 +14,32 @@ export async function getPosts() {
     'category__not_in': 36, // 完成車は除く
     'post_status': ['publish']
   })
-
-  const res = await fetch(`${process.env.WP_REST_API}/wp-json/wp/v2/query?${params}`)
-  return await res.json()
+  return await get(`query?${params}`)
 }
 
 /**
  * 記事一覧リストを取得
  */
 export async function getAllPosts() {
-  const res = await fetch(`${process.env.WP_REST_API}/wp-json/wp/v2/posts/`)
-  return await res.json()
+  return await get(`posts`)
 }
 
-// こんな感じで同じように定義しておけばimport時読み込める
-export async function getAllPoststttt() {
-  return false
+// 記事取得
+export async function getPost(slug: string) {
+  return await get(`post/${slug}`)
+}
+
+// 共通get
+async function get(endpoint: string) {
+  const url = `${process.env.WP_REST_API}/wp-json/wp/v2/${endpoint}`
+  const options = {
+    method: 'GET'
+  }
+  try {
+    const res = await fetch(url, options)
+    return await res.json()
+  } catch (e) {
+    console.error(e)
+    throw e
+  }
 }
