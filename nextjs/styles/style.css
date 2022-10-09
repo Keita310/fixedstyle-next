@@ -1667,11 +1667,13 @@ h3 {
   font-size: 12px;
   line-height: 18px;
   margin: 0;
-  padding-top: 10px;
+  padding: 10px 0;
 }
 .post .st-catgroup a {
   text-decoration: none;
   color: #000;
+  display: inline-block;
+  margin-right: 8px;
 }
 .post .st-catgroup a:hover {
   opacity: 0.5;

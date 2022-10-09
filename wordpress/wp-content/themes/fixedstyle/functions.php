@@ -66,13 +66,15 @@ add_action('rest_api_init', function() {
 		'methods' => 'GET',
 		'callback' => function ($date) {
 			$slug = $date['slug'];
-			$post = get_page_by_path($slug, 'OBJECT', 'post');
+			$p = get_page_by_path($slug, 'OBJECT', 'post');
+			// カテゴリ
+			$p->post_category = get_the_category($p->ID);
 			// 本文の調整
-			$post->post_content = apply_filters('the_content', $post->post_content);
-			$post->post_content = do_shortcode($post->post_content);
+			$p->post_content = apply_filters('the_content', $p->post_content);
+			$p->post_content = do_shortcode($p->post_content);
 			// TOCプラグインが実行されない為ショートコードを埋め込む
-			$post->post_content = get_index_list('[get_index_list]' . $post->post_content);
-			return new WP_REST_Response( $post, 200 );
+			$p->post_content = get_index_list('[get_index_list]' . $p->post_content);
+			return new WP_REST_Response( $p, 200 );
 		}
 	));
 });
