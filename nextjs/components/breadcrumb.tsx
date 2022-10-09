@@ -1,11 +1,31 @@
 import Link from 'next/link'
 import {URLS} from 'const'
 
-const Breadcrumb = () => {
+/**
+ * カテゴリデータを取得
+ * (子カテゴリは無視する)
+ */
+const getCategory = (categories: any) => {
+  for (let i = 0; i < categories.length; i++) {
+    if (categories[i].parent > 0) {
+      continue;
+    }
+    return {
+      link: `${URLS.SITE}/${categories[i].slug}`,
+      name: categories[i].name
+    }
+  }
+}
+
+/**
+ * メインコンポーネント
+ */
+const Breadcrumb = ({post}: {post: any}) => {
+  const category = getCategory(post.post_category)
   const items = [
     {link: URLS.SITE, name: 'HOME'},
-    {link: 'https://fixedstyle.net/customize/', name: 'カスタマイズ'},
-    {link: 'http://localhost:3000/customize/change_seat', name: 'サドル(シート)の交換'},
+    category,
+    {link: `${category.link}/${post.post_name}`, name: post.post_title},
   ]
   const lastIndex = items.length - 1
   return (
