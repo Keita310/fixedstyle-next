@@ -48,6 +48,8 @@ add_action('rest_api_init', function() {
 			setup_postdata($post);
 			$p = $post;
 
+			// 投稿フォーマット
+			$p->post_format = get_post_format();
 			// パーマリンク
   		$p->post_permalink = wp_make_link_relative(get_the_permalink());
 			// カテゴリ
@@ -82,6 +84,9 @@ function custom_query($params) {
 	$data = new WP_Query($params);
 	foreach ($data->posts as &$p) {
 		$data->the_post();
+
+		// 投稿フォーマット
+		$p->post_format = get_post_format();
 		// カテゴリ
 		$p->post_category = get_the_category();
 		// タグ
@@ -104,8 +109,11 @@ function custom_query($params) {
 function get_adjacent_posts($isPrev) {
 	$p = get_adjacent_post(true, '', $isPrev);
 	if ($p) {
+		// 投稿フォーマット
+		$p->post_format = get_post_format();
 		// パーマリンク
   	$p->post_permalink = wp_make_link_relative(get_the_permalink($p->ID));
+		// 画像パス
 		$p->post_eyecatch = get_eyecatch($p->ID);
 	}
 	return $p;
