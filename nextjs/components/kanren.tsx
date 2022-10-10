@@ -1,4 +1,4 @@
-const Kanren = () => {
+const Kanren = ({posts}: {posts: any}) => {
   return (
     <>
       <p className="point"><span className="point-in">関連記事</span></p>

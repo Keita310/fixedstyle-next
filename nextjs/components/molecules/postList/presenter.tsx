@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import {URLS} from 'const'
+import Categories from 'components/categories'
 import Tags from 'components/atoms/tags'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
@@ -9,7 +11,7 @@ const list = (post: ListTypes, key: number) => {
   return (
     <dl key={key}>
       <dt>
-        <Link href={post.post_permalink}>
+        <Link href={URLS.SITE + post.post_permalink}>
           <a>
             <img
               src={post.post_eyecatch.st_thumb150[0]}
@@ -40,7 +42,7 @@ const list = (post: ListTypes, key: number) => {
       </dt>
       <dd>
         <p className='kanren-t'>
-          <Link href={post.post_permalink}>
+          <Link href={URLS.SITE + post.post_permalink}>
             <a>{post.post_title}</a>
           </Link>
         </p>
@@ -49,16 +51,9 @@ const list = (post: ListTypes, key: number) => {
             <FontAwesomeIcon icon={faClock} />
             {post.post_created_at}&nbsp;
             <span className='pcone'>
-              <FontAwesomeIcon icon={faFolderOpen} />
-              <Link href={'/' + post.post_category[0].slug}>
-                <a rel='category tag'>{post.post_category[0].name}</a>
-              </Link>
-              <br />
-              {(() => {
-                if (post.post_tags) {
-                  return <Tags tags={post.post_tags} />
-                }
-              })()}
+              <FontAwesomeIcon icon={faFolderOpen} />&nbsp;
+              <Categories categories={post.post_category} separate=", " /><br />
+              <Tags tags={post.post_tags} />
             </span>
           </p>
         </div>

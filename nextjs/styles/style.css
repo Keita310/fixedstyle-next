@@ -1629,6 +1629,9 @@ h3 {
 .post {
   /*投稿のカテゴリ*/
 }
+.post p.kdate {
+  padding: 0;
+}
 .post p.point {
   margin-bottom: 40px;
   position: relative;
@@ -1670,10 +1673,19 @@ h3 {
   padding: 10px 0;
 }
 .post .st-catgroup a {
-  text-decoration: none;
-  color: #000;
   display: inline-block;
   margin-right: 8px;
+  font-size: 13px !important;
+  line-height: 1em;
+  color: #1a1a1a;
+  white-space: nowrap;
+  padding: 8px 8px;
+  margin-top: 5px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  text-decoration: none;
+  background: #f3f3f3;
 }
 .post .st-catgroup a:hover {
   opacity: 0.5;

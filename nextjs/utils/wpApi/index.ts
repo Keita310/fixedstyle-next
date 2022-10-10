@@ -21,7 +21,12 @@ export async function getPosts() {
  * 記事一覧リストを取得
  */
 export async function getAllPosts() {
-  return await get(`posts`)
+  const params = param({
+    'posts_per_page': -1,
+    'has_password': 0, // false
+    'post_status': ['publish'],
+  })
+  return await get(`query?${params}`)
 }
 
 // 記事取得
