@@ -4,6 +4,10 @@ const Img = ({post}: {post: any}) => {
   }
   return (
 /*
+・旧投稿はeyecatchが指定されていない
+
+
+
             <img
               src={post.post_eyecatch.st_thumb150[0]}
               className='attachment-thumbnail size-thumbnail wp-post-image'
