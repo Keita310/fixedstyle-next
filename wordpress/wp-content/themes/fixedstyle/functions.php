@@ -121,11 +121,31 @@ function get_adjacent_posts($isPrev) {
 
 function get_eyecatch($id) {
 	$thumbId = get_post_thumbnail_id($id);
+	// サムネイルがある
+	if ((bool)$thumbId) {
+		return array(
+			'full' => wp_get_attachment_image_src($thumbId, 'full'),
+			'st_thumb100' => wp_get_attachment_image_src($thumbId, 'st_thumb100'),
+			'st_thumb150' => wp_get_attachment_image_src($thumbId, 'st_thumb150'),
+			'st_thumb500' => wp_get_attachment_image_src($thumbId, 'st_thumb500')
+		);
+	}
+	// 旧ページの場合は固定ファイル名
+	if (get_post_format() === 'aside') {
+		$img = array(
+			get_old_post_thumbnail(), 200, 200, false
+		);
+	// 画像なし
+	} else {
+		$img = array(
+			get_template_directory_uri() . '/images/no-img.png', 100, 100, false
+		);
+	}
 	return array(
-		'full' => wp_get_attachment_image_src($thumbId, 'full'),
-		'st_thumb100' => wp_get_attachment_image_src($thumbId, 'st_thumb100'),
-		'st_thumb150' => wp_get_attachment_image_src($thumbId, 'st_thumb150'),
-		'st_thumb500' => wp_get_attachment_image_src($thumbId, 'st_thumb500')
+		'full' => $img,
+		'st_thumb100' => $img,
+		'st_thumb150' => $img,
+		'st_thumb500' => $img
 	);
 }
 

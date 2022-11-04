@@ -40,8 +40,9 @@ services:
       # {ホスト側の相対パス}:{コンテナ側の絶対パス}:{delegatedパフォーマンスを上げるオプション}
       # - ./wordpress:/var/www/html # この指定だとwpファイルがまるまる連動してしまう。
       - ./wordpress/wp-content/themes/fixedstyle:/var/www/html/wp-content/themes/fixedstyle:delegated
-      # UPロード画像はホスト側と連動
+      # UPロード画像、旧画像はホスト側と連動
       - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
+      - ./wordpress/wp-content/static-img:/var/www/html/wp-content/static-img:delegated
     ports:
       - "8000:80"
     restart: always
