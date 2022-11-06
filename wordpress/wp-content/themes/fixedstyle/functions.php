@@ -6,6 +6,14 @@ if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// 定数
+const EYECATCH_CONFIGS = array(
+  'full' => array(null, null),
+  'st_thumb500' => array(500, 250),
+  'st_thumb150' => array(150, 150),
+  'st_thumb100' => array(100, 100),
+);
+
 if ( !function_exists( 'st_after_setup_theme' ) ) {
 	/**
 	 * テーマの初期設定
@@ -120,15 +128,14 @@ function get_adjacent_posts($isPrev) {
 }
 
 function get_eyecatch($id) {
+	$imgs = array();
 	$thumbId = get_post_thumbnail_id($id);
 	// サムネイルがある
 	if ((bool)$thumbId) {
-		return array(
-			'full' => wp_get_attachment_image_src($thumbId, 'full'),
-			'st_thumb100' => wp_get_attachment_image_src($thumbId, 'st_thumb100'),
-			'st_thumb150' => wp_get_attachment_image_src($thumbId, 'st_thumb150'),
-			'st_thumb500' => wp_get_attachment_image_src($thumbId, 'st_thumb500')
-		);
+		foreach (array_keys(EYECATCH_CONFIGS) as $key) {
+			$imgs[$key] = wp_get_attachment_image_src($thumbId, $key);
+		}
+		return $imgs;
 	}
 	// 旧ページの場合は固定ファイル名
 	if (get_post_format() === 'aside') {
@@ -141,12 +148,10 @@ function get_eyecatch($id) {
 			get_template_directory_uri() . '/images/no-img.png', 100, 100, false
 		);
 	}
-	return array(
-		'full' => $img,
-		'st_thumb100' => $img,
-		'st_thumb150' => $img,
-		'st_thumb500' => $img
-	);
+	foreach (array_keys(EYECATCH_CONFIGS) as $key) {
+		$imgs[$key] = $img;
+	}
+	return $imgs;
 }
 
 function get_category_id($categories) {
@@ -367,9 +372,11 @@ add_filter( 'get_the_excerpt', 'st_trim_excerpt', 9 );
 
 // アイキャッチサムネイル
 add_theme_support( 'post-thumbnails' );
-add_image_size( 'st_thumb100', 100, 100, true );
-add_image_size( 'st_thumb150', 150, 150, true );
-add_image_size( 'st_thumb500', 500, 250, true );
+foreach (EYECATCH_CONFIGS as $key => $size) {
+	if ($key !== 'full') {
+		add_image_size($key, $size[0], $size[1], true);
+	}
+}
 
 // カスタムメニュー
 add_action( 'init', 'my_custom_menus' );
