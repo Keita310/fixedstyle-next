@@ -130,13 +130,7 @@ function get_adjacent_posts($isPrev) {
 function get_eyecatch($id) {
 	$imgs = array();
 	$thumbId = get_post_thumbnail_id($id);
-	// サムネイルがある
-	if ((bool)$thumbId) {
-		foreach (array_keys(EYECATCH_CONFIGS) as $key) {
-			$imgs[$key] = wp_get_attachment_image_src($thumbId, $key);
-		}
-		return $imgs;
-	}
+
 	// 旧ページの場合は固定ファイル名
 	if (get_post_format() === 'aside') {
 		$img = array(
@@ -149,9 +143,19 @@ function get_eyecatch($id) {
 		);
 	}
 	foreach (array_keys(EYECATCH_CONFIGS) as $key) {
+		// サムネイルがある
+		if ((bool)$thumbId) {
+			$img = wp_get_attachment_image_src($thumbId, $key);
+		}
+		$img[4] = $key;
 		$imgs[$key] = $img;
 	}
-	return $imgs;
+
+	array_multisort(array_column($imgs, 1), SORT_NATURAL, $imgs);
+	return array(
+		'default' => $imgs,
+		'width_sort' => array_reverse(array_values($imgs)),
+	);
 }
 
 function get_category_id($categories) {
