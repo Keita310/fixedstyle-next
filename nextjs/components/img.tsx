@@ -28,7 +28,7 @@ const Img = ({ post, size = 'st_thumb100' }: { post: any; size: string }) => {
 
   return (
     <img
-      className={`aaa attachment-${size} size-${size} wp-post-image`}
+      className={`attachment-${size} size-${size} wp-post-image`}
       alt={post.post_title}
       src={main[0]}
       srcSet={srcSet.join(', ')}
