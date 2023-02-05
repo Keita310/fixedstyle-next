@@ -4,7 +4,7 @@ import param from 'jquery-param';
 /**
  * 記事一覧リストを取得
  */
-export async function getPosts() {
+export async function getPosts(page = 1, category = null) {
   const params = param({
     'posts_per_page': 10,
     'has_password': 0, // false
@@ -12,6 +12,8 @@ export async function getPosts() {
     'orderby': 'date',
     'order': 'DESC',
     'category__not_in': 36, // 完成車は除く
+    'category_name': category,
+    'paged': page,
     'post_status': ['publish']
   })
   return await get(`query?${params}`)

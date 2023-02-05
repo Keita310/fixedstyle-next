@@ -38,8 +38,11 @@ add_action('rest_api_init', function() {
 		'methods' => 'GET',
 		'callback' => function ($req) {
 			$params = $req->get_query_params();
-			$posts = custom_query($params);
-			return new WP_REST_Response($posts, 200);
+			$data = custom_query($params);
+			return new WP_REST_Response(array(
+				'posts' => $data->posts,
+				'max_num_pages' => $data->max_num_pages
+			), 200);
 		}
 	));
 });
@@ -67,10 +70,14 @@ add_action('rest_api_init', function() {
 			// 画像パス
 			$p->post_eyecatch = get_eyecatch($p->ID);
 			// 本文の調整
-			$p->post_content = apply_filters('the_content', $p->post_content);
-			$p->post_content = do_shortcode($p->post_content);
-			// TOCプラグインが実行されない為ショートコードを埋め込む
-			$p->post_content = get_index_list('[get_index_list]' . $p->post_content);
+			if ($p->post_format === 'aside') {
+				$p->post_content = get_the_old_content();
+			} else {
+				$p->post_content = apply_filters('the_content', $p->post_content);
+				$p->post_content = do_shortcode($p->post_content);
+				// TOCプラグインが実行されない為ショートコードを埋め込む
+	//			$p->post_content = get_index_list('[get_index_list]' . $p->post_content);
+			}
 			// 同カテゴリに属する前後の記事
 			$p->adjacent_post = (object)array(
 				'prev' => get_adjacent_posts(true),
@@ -82,7 +89,7 @@ add_action('rest_api_init', function() {
 				'category__in' => get_category_id($p->post_category),
 				'post__not_in' => array($p->ID),
 				'orderby' => 'rand',
-			));
+			))->posts;
 			return new WP_REST_Response($p, 200);
 		}
 	));
@@ -105,13 +112,13 @@ function custom_query($params) {
 		$p->post_created_at = get_the_time('Y/m/d');
 		$p->post_updated_at = get_the_modified_time('Y/m/d');
 		// 抜粋文
-		$p->post_excerpt = get_the_excerpt();
+		$p->post_excerpt = get_the_custom_excerpt();
 		// 画像パス
 		$p->post_eyecatch = get_eyecatch($p->ID);
 		// カスタムフィールド
 		$p->custom_field = get_post_custom($p->ID);
 	}
-	return $data->posts;
+	return $data;
 }
 
 function get_adjacent_posts($isPrev) {
@@ -132,9 +139,9 @@ function get_eyecatch($id) {
 	$thumbId = get_post_thumbnail_id($id);
 
 	// 旧ページの場合は固定ファイル名
-	if (get_post_format() === 'aside') {
+	if (get_post_format($id) === 'aside') {
 		$img = array(
-			get_old_post_thumbnail(), 200, 200, false
+			get_old_post_thumbnail($id), 200, 200, false
 		);
 	// 画像なし
 	} else {
@@ -737,14 +744,14 @@ add_filter( 'gettext_with_context', 'post_format_name_change' );
 
 /* 旧ソース用本文出力
 ****************************************/
-function old_the_content() {
+function get_the_old_content() {
 	remove_filter('the_content', 'wpautop');
 	$content = get_the_content();
 	$content = do_shortcode($content);
 	$content = adjust_img_path($content);
 	$content = insert_add($content);
-	$content = apply_filters( 'the_content', $content );
-	echo $content;
+	$content = apply_filters( 'the_content', $content);
+	return '<div class="old-content">' . $content . '</div>';
 }
 
 /* 旧ソース最適化
@@ -758,11 +765,11 @@ function adjust_img_path($content) {
 	//画像パス調整
 	$content = preg_replace("/(\.\.\/\.\.\/|\.\.\/)img/", content_url() . '/static-img', $content);
 	//見出し数変換
-	$content = preg_replace("/(<|<\/)(h)(\d)/e", "'$1$2' . (intval($3) - 1)", $content);
+	$content = preg_replace_callback("/(<|<\/)(h)(\d)/", function($matches) {
+		return $matches[1] . $matches[2] . (intval($matches[3]) - 1);
+	}, $content);
 	//見出しの中のaタグを除去
 	$content = preg_replace("/(<h\d)(>|.*?>)(<a .*?>)(.*?)(<\/a>)(<\/h\d>)/s", "$1$2$4$6", $content);
-	//https化
-	$content = str_replace("http://", "https://", $content);
 	//no-sslのクラスがある場合はhttpに戻す
 	$content = preg_replace("/(<.*?)(https:)(.*?)(no-ssl)(.*?>)/", '$1http:$3$4$5', $content);
 
@@ -775,9 +782,9 @@ function the_old_post_thumbnail() {
 	$img = get_old_post_thumbnail();
 	echo '<img src="' . $img . '" class="old-thumbnail">';
 }
-function get_old_post_thumbnail() {
-	$slug = basename(get_permalink());
-	$cat = get_the_category();
+function get_old_post_thumbnail($id = null) {
+	$slug = basename(get_permalink($id));
+	$cat = get_the_category($id);
 	$cat_name = $cat[0]->category_nicename;
 	if ($cat_name === 'parts' || $cat_name === 'trick' || $cat_name === 'movie') {
 		$file_name = $slug;
@@ -947,15 +954,15 @@ add_shortcode('level', 'trickLevel');
 
 /* カスタム抜粋
 ****************************************/
-function the_custom_excerpt($length = 100) {
+function get_the_custom_excerpt($length = 100) {
 	$content =  get_the_excerpt();
 	$content =  strip_shortcodes($content);
-	$content =  preg_replace("/<h\d.*?<\/h\d>/", "", $content);
+	$content =  preg_replace('/<h\d.*?<\/h\d>/', '', $content);
 	$content =  strip_tags($content);
-	$content =  str_replace("&nbsp;","",$content); 
-	$content =  html_entity_decode($content,ENT_QUOTES,"UTF-8");
-	$content =  mb_substr($content,0, $length);
-	echo "<p>" . $content . '…</p>';
+	$content =  str_replace('&nbsp;', '',$content); 
+	$content =  html_entity_decode($content, ENT_QUOTES, 'UTF-8');
+	$content =  mb_substr($content, 0, $length);
+	return $content . '…';
 }
 
 /* 目次挿入とアンカー埋め込み
