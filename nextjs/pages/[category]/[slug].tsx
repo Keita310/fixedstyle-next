@@ -4,6 +4,7 @@ import AdSense from 'components/adSense'
 import PrevNext from 'components/prevNext'
 import Kanren from 'components/kanren'
 import Sns from 'components/sns'
+import Img from 'components/img'
 import Categories from 'components/categories'
 import Tags from 'components/atoms/tags'
 import {getCategory} from 'utils'
@@ -11,27 +12,6 @@ import {getPost, getAllPosts} from 'utils/wpApi'
 import {dispYYYYMD, dateFormat} from 'utils/date'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFolderOpen} from '@fortawesome/free-regular-svg-icons'
-
-/**
- * アイキャッチ画像
- */
-const Eyecatch = ({post}: {post: any}) => {
-  return (
-    <div className="eyecatch">
-      <img
-        width={post.post_eyecatch.full[1]}
-        height={post.post_eyecatch.full[2]}
-        src={post.post_eyecatch.full[0]}
-        className="attachment-full size-full wp-post-image"
-        alt={post.post_title}
-        srcSet={`${post.post_eyecatch.full[0]} ${post.post_eyecatch.full[1]}w,
-        ${post.post_eyecatch.st_thumb500[0]} ${post.post_eyecatch.st_thumb500[1]}w`}
-        sizes={`(max-width: ${post.post_eyecatch.full[1]}px) 100vw, ${post.post_eyecatch.full[1]}px`}
-      />
-    </div>
-  )
-}
-
 
 /**
  * 投稿/更新日
@@ -52,7 +32,6 @@ const PostDate = ({post}: {post: any}) => {
  * メイン
  */
 function Post({post}: {post: any}) {
-  console.log('post', post)
   return (
     <Layout>
       <Breadcrumb post={post} />
@@ -72,7 +51,7 @@ function Post({post}: {post: any}) {
           <div className="mainbox">
             <div className="entry-content">
               <div id="content">
-                <Eyecatch post={post} />
+                <Img post={post} size="full" />
                 <AdSense />
                 <div dangerouslySetInnerHTML={{ __html: post.post_content}} />
               </div>
@@ -101,7 +80,7 @@ function Post({post}: {post: any}) {
  * 静的生成するページリストをここで定義する
  */
 export async function getStaticPaths () {
-  const posts = await getAllPosts()
+  const {posts, max_num_pages} = await getAllPosts()
   const paths = posts.map((post) => {
     const {link} = getCategory(post.post_category)
     return {
