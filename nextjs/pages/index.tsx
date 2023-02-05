@@ -6,7 +6,7 @@ import Sns from 'components/sns'
 import PostList from 'components/molecules/postList'
 import Pager from 'components/pager'
 
-function Index({posts}: {posts: any}) {
+function Index({posts, max_num_pages}: {posts: any; max_num_pages: number}) {
   return (
     <Layout>
       <div className="banner-recomends">
@@ -43,7 +43,7 @@ function Index({posts}: {posts: any}) {
       <article>
         <div className="st-aside">
           <PostList posts={posts} />
-          <Pager />
+          <Pager max_num_pages={max_num_pages} />
         </div>
         <Sns />
       </article>
@@ -52,10 +52,11 @@ function Index({posts}: {posts: any}) {
 }
 
 export async function getStaticProps() {
-  const posts = await getPosts()
+  const {posts, max_num_pages} = await getPosts()
   return {
     props: {
-      posts: posts
+      posts: posts,
+      max_num_pages: max_num_pages
     },
   }
 }
