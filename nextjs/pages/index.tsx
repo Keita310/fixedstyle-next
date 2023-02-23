@@ -4,9 +4,8 @@ import {getPosts} from 'utils/wpApi'
 import Layout from 'components/layout'
 import Sns from 'components/sns'
 import PostList from 'components/molecules/postList'
-import Pager from 'components/pager'
 
-function Index({posts, max_num_pages}: {posts: any; max_num_pages: number}) {
+function Index({posts}: {posts: any}) {
   return (
     <Layout>
       <div className="banner-recomends">
@@ -43,7 +42,6 @@ function Index({posts, max_num_pages}: {posts: any; max_num_pages: number}) {
       <article>
         <div className="st-aside">
           <PostList posts={posts} />
-          <Pager max_num_pages={max_num_pages} />
         </div>
         <Sns />
       </article>
@@ -52,11 +50,10 @@ function Index({posts, max_num_pages}: {posts: any; max_num_pages: number}) {
 }
 
 export async function getStaticProps() {
-  const {posts, max_num_pages} = await getPosts()
+  const {posts} = await getPosts()
   return {
     props: {
       posts: posts,
-      max_num_pages: max_num_pages
     },
   }
 }
