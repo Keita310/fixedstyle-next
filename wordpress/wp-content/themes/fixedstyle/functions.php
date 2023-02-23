@@ -174,6 +174,19 @@ function get_category_id($categories) {
 	return 0;
 }
 
+// WP_Queryを実行するAPI
+add_action('rest_api_init', function() {
+	register_rest_route( 'wp/v2', '/categories', array(
+		'methods' => 'GET',
+		'callback' => function ($req) {
+			$params = $req->get_query_params();
+			$categories = get_categories($params);
+			$categories = array_values($categories); 
+			return new WP_REST_Response($categories, 200);
+		}
+	));
+});
+
 /* セッション開始
 ****************************************/
 function init_session_start() {

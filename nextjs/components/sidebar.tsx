@@ -14,7 +14,7 @@ const Sideber = () => {
             <h2 className="widget-title"> <i className="fa fa-star"></i>人気コンテンツ </h2>
             <div className="kanren side-post-favorite">
               <dl> <dt><a href="https://fixedstyle.net/customize/custom_brake/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2016/01/brake-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="ブレーキのカスタム" srcset="https://fixedstyle.net/wp-content/uploads/2016/01/brake-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2016/01/brake-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2016/01/brake-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="ブレーキのカスタム" srcSet="https://fixedstyle.net/wp-content/uploads/2016/01/brake-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2016/01/brake-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/customize/custom_brake/">ブレーキのカスタム</a></p>
                   <div className="smanone2">
@@ -23,7 +23,7 @@ const Sideber = () => {
                 </dd>
               </dl>
               <dl> <dt><a href="https://fixedstyle.net/beginner/frame_size/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="フレームサイズ" srcset="https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="フレームサイズ" srcSet="https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2010/04/frame_size-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/beginner/frame_size/">フレームサイズの基礎知識</a></p>
                   <div className="smanone2">
@@ -32,7 +32,7 @@ const Sideber = () => {
                 </dd>
               </dl>
               <dl> <dt><a href="https://fixedstyle.net/customize/change_chain/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="チェーン交換" srcset="https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="チェーン交換" srcSet="https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2014/09/chain_cut-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/customize/change_chain/">チェーン交換</a></p>
                   <div className="smanone2">
@@ -46,7 +46,7 @@ const Sideber = () => {
             <h2 className="widget-title"> <i className="fa fa-leaf"></i>新着コンテンツ </h2>
             <div className="kanren side-post-latest">
               <dl> <dt><a href="https://fixedstyle.net/customize/change_seat/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="ピストシート交換" srcset="https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="ピストシート交換" srcSet="https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2022/01/change_seat_top-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/customize/change_seat/">サドル(シート)の交換</a></p>
                   <div className="smanone2">
@@ -55,7 +55,7 @@ const Sideber = () => {
                 </dd>
               </dl>
               <dl> <dt><a href="https://fixedstyle.net/maintenance/clean_brake/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-150x150.png" className="attachment-thumbnail size-thumbnail wp-post-image" alt="" srcset="https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-150x150.png 150w, https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-100x100.png 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-150x150.png" className="attachment-thumbnail size-thumbnail wp-post-image" alt="" srcSet="https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-150x150.png 150w, https://fixedstyle.net/wp-content/uploads/2021/02/clean_brake_top-100x100.png 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/maintenance/clean_brake/">ブレーキシューのお手入れ</a></p>
                   <div className="smanone2">
@@ -64,7 +64,7 @@ const Sideber = () => {
                 </dd>
               </dl>
               <dl> <dt><a href="https://fixedstyle.net/customize/throttle_brake/">
-                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2020/01/13-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="" srcset="https://fixedstyle.net/wp-content/uploads/2020/01/13-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2020/01/13-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
+                    <img width="150" height="150" src="https://fixedstyle.net/wp-content/uploads/2020/01/13-150x150.jpg" className="attachment-thumbnail size-thumbnail wp-post-image" alt="" srcSet="https://fixedstyle.net/wp-content/uploads/2020/01/13-150x150.jpg 150w, https://fixedstyle.net/wp-content/uploads/2020/01/13-100x100.jpg 100w" sizes="(max-width: 150px) 100vw, 150px" />					</a></dt>
                 <dd>
                   <p className="kanren-t"><a href="https://fixedstyle.net/customize/throttle_brake/">スロットルブレーキカスタム</a></p>
                   <div className="smanone2">
@@ -77,7 +77,7 @@ const Sideber = () => {
           <div id="scrollad">
             <aside>
               <div id="search">
-                <form method="get" id="searchform" action="https://fixedstyle.net/"> <label className="hidden" for="s">
+                <form method="get" id="searchform" action="https://fixedstyle.net/"> <label className="hidden" htmlFor="s">
                 </label> <input type="text" placeholder="キーワードを入力" value="" name="s" id="s" />
                   <div id="searchsubmit"><i className="fa fa-search"></i></div>
                 </form>
@@ -86,15 +86,15 @@ const Sideber = () => {
             <aside>
               <h2 className="widget-title"><i className="fa fa-list-ul"></i>カテゴリー</h2>
               <ul>
-                <li className="cat-item cat-item-26"><a href="https://fixedstyle.net/beginner/">ピストバイク入門</a> </li>
-                <li className="cat-item cat-item-36"><a href="https://fixedstyle.net/complete_bike/">ピストバイク完成車</a> </li>
-                <li className="cat-item cat-item-5"><a href="https://fixedstyle.net/parts/">パーツ</a> </li>
-                <li className="cat-item cat-item-2"><a href="https://fixedstyle.net/maintenance/">メンテナンス</a> </li>
-                <li className="cat-item cat-item-4"><a href="https://fixedstyle.net/customize/">カスタマイズ</a> </li>
-                <li className="cat-item cat-item-6"><a href="https://fixedstyle.net/trick/">トリック</a> </li>
-                <li className="cat-item cat-item-3"><a href="https://fixedstyle.net/movie/">動画</a> </li>
-                <li className="cat-item cat-item-29"><a href="https://fixedstyle.net/glossary/">ピストバイク用語集</a> </li>
-                <li className="cat-item cat-item-25"><a href="https://fixedstyle.net/other/">その他</a> </li>
+                <li className="cat-item cat-item-26"><a href="/beginner/">ピストバイク入門</a> </li>
+                <li className="cat-item cat-item-36"><a href="/complete_bike/">ピストバイク完成車</a> </li>
+                <li className="cat-item cat-item-5"><a href="/parts/">パーツ</a> </li>
+                <li className="cat-item cat-item-2"><a href="/maintenance/">メンテナンス</a> </li>
+                <li className="cat-item cat-item-4"><a href="/customize/">カスタマイズ</a> </li>
+                <li className="cat-item cat-item-6"><a href="/trick/">トリック</a> </li>
+                <li className="cat-item cat-item-3"><a href="/movie/">動画</a> </li>
+                <li className="cat-item cat-item-29"><a href="/glossary/">ピストバイク用語集</a> </li>
+                <li className="cat-item cat-item-25"><a href="/other/">その他</a> </li>
               </ul>
             </aside>
             <aside>

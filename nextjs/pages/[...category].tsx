@@ -1,4 +1,5 @@
-import {getPosts} from 'utils/wpApi'
+import {POSTS_PER_PAGE} from 'const'
+import {getPosts, getCategories} from 'utils/wpApi'
 import Layout from 'components/layout'
 import PostList from 'components/molecules/postList'
 import Pager from 'components/pager'
@@ -24,23 +25,21 @@ export function Category({
 }
 
 export async function getStaticPaths () {
+  const categories = await getCategories()
+  const paths = []
+  for (const category of categories) {
+    const pageCount = Math.ceil(Number(category.category_count) / POSTS_PER_PAGE)
+    for (let i = 1; i <= pageCount; i++) {
+      const path = (i === 1) ? [category.slug] : [category.slug, 'page', String(i)]
+      paths.push({
+        params: {
+          category: path,
+        }
+      })
+    }
+  }
   return {
-    // 静的生成するページリストをここで定義する。APIで取得するように調整
-    paths: [
-      { params: { category: ['customize'] } },
-      { params: { category: ['customize', 'page', '2'] } },
-      { params: { category: ['customize', 'page', '3'] } },
-      { params: { category: ['customize', 'page', '4'] } },
-      { params: { category: ['customize', 'page', '5'] } },
-      { params: { category: ['customize', 'page', '6'] } },
-      { params: { category: ['customize', 'page', '7'] } },
-      { params: { category: ['customize', 'page', '8'] } },
-      { params: { category: ['customize', 'page', '9'] } },
-      { params: { category: ['customize', 'page', '10'] } },
-      { params: { category: ['customize', 'page', '11'] } },
-      { params: { category: ['customize', 'page', '12'] } },
-      { params: { category: ['customize', 'page', '13'] } },
-    ],
+    paths: paths,
     fallback: false,
   }
 }

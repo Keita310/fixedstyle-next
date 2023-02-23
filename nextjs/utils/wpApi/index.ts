@@ -1,3 +1,4 @@
+import {POSTS_PER_PAGE} from 'const'
 import fetch from 'isomorphic-unfetch'
 import param from 'jquery-param';
 
@@ -6,7 +7,7 @@ import param from 'jquery-param';
  */
 export async function getPosts(page = 1, category = null) {
   const params = param({
-    'posts_per_page': 10,
+    'posts_per_page': POSTS_PER_PAGE,
     'has_password': 0, // false
     'thumbnail': 'news_list',
     'orderby': 'date',
@@ -34,6 +35,16 @@ export async function getAllPosts() {
 // 記事取得
 export async function getPost(slug: string) {
   return await get(`post/${slug}`)
+}
+
+/**
+ * カテゴリ一覧を取得(親のみ)
+ */
+export async function getCategories() {
+  const params = param({
+    'parent': 0 
+  })
+  return await get(`categories?${params}`)
 }
 
 // 共通get
