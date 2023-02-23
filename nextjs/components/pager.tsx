@@ -31,7 +31,7 @@ const Pager = ({page}: {page: any}) => {
       continue
     }
     // 端から2番目はdot表示
-    if ((i === 2 && page.current > bothEndsCount + 2) || (i === page.all - 1 && page.current < page.all - bothEndsCount + 1)) {
+    if ((i === 2 && page.current > bothEndsCount + 2) || (i === page.all - 1 && page.current + bothEndsCount + 1 < page.all)) {
       pagerConfig.push({
         query: null,
         title: '…',
