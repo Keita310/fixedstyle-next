@@ -15,7 +15,6 @@ export function Category({
 }) {
   return (
     <Layout>
-      {console.log(page)}
       <article>
         <h2 className="entry-title">「{title}」 一覧 </h2>
         <PostList posts={posts} />

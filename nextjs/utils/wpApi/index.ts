@@ -1,11 +1,14 @@
 import {POSTS_PER_PAGE, GET_POSTS_TYPES, COMPLETE_BIKES_CATE_ID} from 'const'
 import fetch from 'isomorphic-unfetch'
-import param from 'jquery-param';
 
 /**
  * 記事一覧リストを取得
  */
-export async function getPosts(page = 1, keyword = null, type: string = '') {
+export async function getPosts(
+  page = '1',
+  keyword: string | null | undefined = null,
+  type: string = ''
+) {
   const config = {
     'posts_per_page': POSTS_PER_PAGE,
     'has_password': 0, // false
@@ -23,8 +26,11 @@ export async function getPosts(page = 1, keyword = null, type: string = '') {
   if (type === GET_POSTS_TYPES.TAG) {
     config.tag = keyword
   }
+  if (type === GET_POSTS_TYPES.KEYWORD) {
+    config.s = keyword
+  }
 
-  const params = param(config)
+  const params = new URLSearchParams(config)
   return await get(`query?${params}`)
 }
 
@@ -32,11 +38,11 @@ export async function getPosts(page = 1, keyword = null, type: string = '') {
  * 記事一覧リストを取得
  */
 export async function getAllPosts() {
-  const params = param({
+  const params = new URLSearchParams({
     'posts_per_page': -1,
     'has_password': 0, // false
     'post_status': ['publish'],
-  })
+  } as any)
   return await get(`query?${params}`)
 }
 
@@ -49,8 +55,8 @@ export async function getPost(slug: string) {
  * カテゴリ一覧を取得(親のみ)
  */
 export async function getCategories() {
-  const params = param({
-    'parent': 0 
+  const params = new URLSearchParams({
+    'parent': '0' 
   })
   return await get(`categories?${params}`)
 }
@@ -66,8 +72,8 @@ export async function getTags() {
  * タグ一覧を取得(完成車カテゴリを除く)
  */
 export async function getTagsNotInCompleteBikes() {
-  const params = param({
-    'category__not_in': COMPLETE_BIKES_CATE_ID
+  const params = new URLSearchParams({
+    'category__not_in': String(COMPLETE_BIKES_CATE_ID)
   })
   return await get(`tags?${params}`)
 }

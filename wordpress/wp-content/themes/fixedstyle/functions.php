@@ -41,7 +41,8 @@ add_action('rest_api_init', function() {
 			$data = custom_query($params);
 			return new WP_REST_Response(array(
 				'posts' => $data->posts,
-				'max_num_pages' => $data->max_num_pages
+				'max_num_pages' => $data->max_num_pages,
+				'found_posts' => (int)$data->found_posts
 			), 200);
 		}
 	));
