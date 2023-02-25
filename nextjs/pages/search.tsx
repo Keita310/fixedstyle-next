@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react';
+import Head from 'next/head'
+import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import Layout from 'components/layout'
 import PostList from 'components/molecules/postList'
@@ -30,13 +31,18 @@ export function Search() {
 
 
   return (
-    <Layout>
-      <article>
-        <h2 className="entry-title">「{w}」の検索結果 {foundPosts} 件</h2>
-        <PostList posts={posts} />
-        <Pager page={page} />
-      </article>
-    </Layout>
+    <>
+      <Head>
+        <meta name="robots" content="noindex,nofollow" />
+      </Head>
+      <Layout>
+        <article>
+          <h2 className="entry-title">「{w}」の検索結果 {foundPosts} 件</h2>
+          <PostList posts={posts} />
+          <Pager page={page} />
+        </article>
+      </Layout>
+    </>
   )
 }
 
