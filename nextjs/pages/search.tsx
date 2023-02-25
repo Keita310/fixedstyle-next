@@ -8,7 +8,7 @@ import fetch from 'isomorphic-unfetch'
 export function Search() {
   const router = useRouter()
   const w = router.query.w as string
-  const p = router.query.p as string
+  const p = router.query.p ? router.query.p as string : '1'
 
   const [foundPosts, setFoundPosts] = useState(0)
   const [posts, setPosts] = useState([])
