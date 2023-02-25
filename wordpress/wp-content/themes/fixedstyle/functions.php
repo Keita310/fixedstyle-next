@@ -174,7 +174,7 @@ function get_category_id($categories) {
 	return 0;
 }
 
-// WP_Queryを実行するAPI
+// get_categories相当のAPI
 add_action('rest_api_init', function() {
 	register_rest_route( 'wp/v2', '/categories', array(
 		'methods' => 'GET',
@@ -183,6 +183,33 @@ add_action('rest_api_init', function() {
 			$categories = get_categories($params);
 			$categories = array_values($categories); 
 			return new WP_REST_Response($categories, 200);
+		}
+	));
+});
+
+// get_tags相当のAPI
+add_action('rest_api_init', function() {
+	register_rest_route( 'wp/v2', '/tags', array(
+		'methods' => 'GET',
+		'callback' => function ($req) {
+			$params = $req->get_query_params();
+
+			// 指定カテゴリ除外
+			if (isset($params['category__not_in'])) {
+				$posts = custom_query(array(
+					'posts_per_page' => -1,
+					'category__in' => $params['category__not_in'],
+				))->posts;
+				$exclude = array();
+				foreach ($posts as $p){
+					$exclude[] = $p->post_tags[0]->term_id;
+				}
+				$params['exclude'] = implode(',', $exclude);
+			}
+
+			$tags = get_tags($params);
+			$tags = array_values($tags);
+			return new WP_REST_Response($tags, 200);
 		}
 	));
 });
