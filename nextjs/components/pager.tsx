@@ -95,7 +95,7 @@ const Pager = ({page}: {page: any}) => {
     })
   }
 
-  if (all === 1) {
+  if (all <= 1) {
     return null
   }
   return (
