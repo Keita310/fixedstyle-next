@@ -1294,15 +1294,23 @@ nav li a:hover {
   margin-bottom: 5px;
 }
 #s-navi .acordion_tree {
-  padding: 10px 10px 20px;
-  display: none;
+  padding: 0 10px;
+  height: 0;
   overflow: hidden;
   top: 0px;
   width: 100%;
   box-sizing: border-box;
   text-align: left;
+  transition: all .2s ease;
 }
-
+#s-navi #acordion {
+  display: none;
+}
+#s-navi #acordion:checked + .acordion_tree {
+  transition: all .2s ease;
+  padding: 10px 10px 20px;
+  height: auto;
+}
 .acordion_tree ul.menu li {
   float: none;
   font-size: 15px;
